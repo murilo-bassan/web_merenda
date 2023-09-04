@@ -11,4 +11,5 @@ public class alunoControle {
 		return "/aluno/aluno-index";
 	}
 	//tradutor
+	//sei la
 }
