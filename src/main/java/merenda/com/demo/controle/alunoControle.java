@@ -12,4 +12,5 @@ public class alunoControle {
 	}
 	//tradutor
 	//sei la
+	
 }
