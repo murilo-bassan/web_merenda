@@ -28,7 +28,7 @@
 					<span th:text="${mensagem}"></span>
 				</div> 
 				
-				<form th:action="@{/gravar}" th:object="${novaRestricao}" method="post">
+				<form th:action="@{/gravarRestricao}" th:object="${novaRestricao}" method="post">
 				
 				<div class="row mb-3">
 				
@@ -68,8 +68,7 @@
 					
 				</div>
 
-
-					<input class="btn btn-success" type="submit" value="Gravar"/> 
+					<input class="btn btn-success" type="submit" value="Enviar"/> 
 					
 				</form>
 				

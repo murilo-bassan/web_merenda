@@ -5,17 +5,17 @@ package merenda.com.demo.servico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import merenda.com.demo.modelo.Restricao;
-import merenda.com.demo.repositorio.RestricaoRepositorio;
+import merenda.com.demo.modelo.Feedback;
+import merenda.com.demo.repositorio.FeedbackRepositorio;
 
 @Service
-public class RestricaoServico {
+public class FeedbackServico {
 
 		@Autowired
-		private RestricaoRepositorio restricaoRepositorio;
+		private FeedbackRepositorio feedbackRepositorio;
 		
-		public Restricao criarRestricao(Restricao restricao) {
-			return restricaoRepositorio.save(restricao);
+		public Feedback criarFeedback(Feedback feedback) {
+			return feedbackRepositorio.save(feedback);
 		}
 		
 		//import - java.util
