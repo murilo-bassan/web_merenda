@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:insert="fragment/navbar"></div>
+	
+	<h1>Feedback</h1>
+	<p>Clique no botao para enviar um
+	   feedback sobre a merenda do IF!
+	</p>
+	
+	<a th:href = "@{/pagFeedback}"><button type="button" class="btn btn-success">Clique Aqui</button></a>
+	
+</body>
+</html>
