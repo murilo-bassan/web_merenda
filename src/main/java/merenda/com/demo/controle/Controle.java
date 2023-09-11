@@ -88,6 +88,18 @@ public class Controle {
 		return "redirect:/redirectFeedback";
 	}
 	
+	@GetMapping("/redirectCardapio")
+	public String redirecionarCardapio() {
+		
+		return "/aluno/redirectCardapio";
+	}
+	
+	@GetMapping("/pagCardapio")
+	public String cardapio() {
+		
+		return "/aluno/cardapio";
+	}
+	
 	//@PostMapping("/gravar")
 	//public String gravarEstudante(@ModelAttribute("novoEstudante") @Valid Estudante estudante,
 	//		BindingResult erros, Model model, 
