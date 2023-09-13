@@ -8,10 +8,24 @@
 <script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
 <script th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
 </head>
+
+<style>
+        .btn-custom{
+            background-color: #016A13; 
+            border-radius: 50px;
+            box-shadow: 2px  2px  #016A13;
+
+        }
+
+        body{
+            align-items: center;  
+        }
+</style>
 	<body>
 		<nav th:fragment="nav" style="background-color: #016A13;" class="navbar navbar-expand-lg navbar-dark ">
 		
-		<a class="navbar-brand" href="/"><i> Merenda IFMS</i></a>
+		<a class="navbar-brand" href="/"><i><img src="Captura de Tela 2023-09-13 às 10.55.03.png"
+					alt="Captura de Tela 2023-09-13 às 10.44.48" width="20%"> Merenda IFMS</i></a>
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
 			<span class="navbar-toggler-icon"></span>
