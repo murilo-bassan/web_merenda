@@ -28,25 +28,28 @@
 
         }
 
-        body{
-            align-items: center;  
+        .container{
+            text-align: center;
         }
+        
 </style>
 
-  <body>
+  <body>    
   
   <div th:insert="fragment/navbar"></div>
   
     <div class = "container">
             <div class="row">
                 <div class="col-md-6">     <!-- verificar alinhamentos das colunas bootstrap-->
-                    <h1>Cardápio Semanal</h1>  
-                        <p> Confira qual será a merenda servida durante a semana  19/06 - 23/06</p>
-                        <a th:href = "@{/pagCardapio}">
-	                        <button type="button" class="btn btn-success btn-custom">
-	                            Clique aqui
-	                        </button>
-                        </a>
+                    <div class="configdiv">
+                        <h1>Cardápio Semanal</h1>  
+                            <p> Confira qual será a merenda servida durante a semana  19/06 - 23/06</p>
+                            <a th:href = "@{/pagCardapio}">
+                                <button type="button" class="btn btn-success btn-custom">
+                                    Clique aqui
+                                </button>
+                            </a>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <img src="Aluno-img-cardapio.png" alt="Aluno-img-cardapio" width="50%">
