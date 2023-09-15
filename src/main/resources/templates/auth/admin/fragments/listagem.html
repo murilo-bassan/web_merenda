@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+
+<body>
+
+<table th:fragment="lista" class="table table-sm">	
+			<tr class = "nova">
+				<td ><a class="btn btn-primary" href="/noticia/nova"><i class="bi bi-plus-circle-fill"></i></a></td>
+			</tr>
+		<tbody class = "container-grid">
+	
+			<tr class = "empty" th:if="${noticias.empty}">
+				<td  colspan="2"><i class="bi bi-slash-circle"></i></td>
+			</tr>
+			<tr class = "card"  th:each="noticia : ${noticias}">
+			
+			
+			<th:block th:if="${noticia.fotos.empty }">
+			<td> Sem Imagem </td>
+			
+			</th:block>
+			<th:block th:unless="${noticia.fotos.empty }">
+			<td> <td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td> </td>
+			
+			</th:block>
+			
+			
+				
+				<td><span th:text="${noticia.titulo}" class="titulo"> Título </span></td>
+				<td><span th:text="${noticia.subtitulo}" class="subtitulo"> Subtítulo</span></td>
+				<td><span th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Corpo</span></td>
+				<td><span th:text="${noticia.autor}"> Autor: </span></td>
+				
+				  <td class = "botao">
+					<a class="apagar" 
+					   th:href="@{admin/apagar/{id}(id=${noticia.id})}"
+					   th:data-confirm-delete="|Você gostaria de apagar ${noticia.titulo}?|"
+  					   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					  <i class="bi bi-trash-fill"></i></a>
+					   <a class="editar" 
+					   th:href="@{/noticia/editar/{id}(id=${noticia.id})}">
+					   <i class="bi bi-pencil-fill"></i></a>
+					   <a class="fotos" 
+					   th:href="@{/noticia/listarFotos/{idNoticia}(idNoticia=${noticia.id})}">
+					   <i class="bi bi-camera-fill"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>    
+
+
+</body>
+</html>

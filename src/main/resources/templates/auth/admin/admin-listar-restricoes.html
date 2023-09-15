@@ -1,0 +1,47 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+<head th:replace="fragments/cssJs :: head"></head>
+
+<body>
+
+	<!-- ======= NavBar ======= -->
+	<header id="header" class="header fixed-top d-flex align-items-left">
+			<nav class="header-nav ml-auto">
+				<div class="d-flex flex-row bd-highlight mb-3 messages" >
+					<div class="p-2 bd-highlight">*Logo*</div>
+					<div class="p-2 bd-highlight message-item" >Merenda IFMS</div>
+				</div>
+			</nav>
+			<nav class="header-nav ms-auto">
+					<div class="bi bi-person-fill"></div>
+			</nav>
+	</header>
+	<!-- ======= End NavBar ======= -->
+
+	<!-- ======= Sidebar ======= -->
+	<div th:insert="auth/admin/fragments/barraLateralFrag :: sideBar"></div>
+	<!-- End Sidebar-->
+	
+	
+
+	<main id="main" class="main">
+			
+		
+				
+				  	
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<!--   <div th:insert="auth/footer/footerFrag :: footer"></div> -->
+	<!-- ======= End Footer ======= -->
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<th:block th:insert="fragments/cssJs :: js" th:remove="tag"></th:block>
+</body>
+</html>

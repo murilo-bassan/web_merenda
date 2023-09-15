@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Editar</title>
+
+<link rel="stylesheet"
+	th:href="@{/bootstrap-5.3.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+<head th:replace="fragments/cssJs :: head"></head>
+
+
+
+<style>
+.mensagem {
+	color: red;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="alert alert-success alert-dismissible fade show"
+					th:if="${mensagem}">
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+					<span th:text="${mensagem}"></span>
+				</div>
+				<form action="#" th:action="@{/noticia/editar/{id}(id=${noticia.id})}" th:object="${noticia}" 
+				method="post" enctype="multipart/form-data">
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Título:</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" th:field="*{titulo}">
+						</div>
+						<div class="col-sm-5">
+							<span class="mensagem" th:if="${#fields.hasErrors('titulo')}"
+								th:errors="*{titulo}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Subtitulo :</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" th:field="*{subtitulo}">
+						</div>
+						<div class="col-sm-5">
+							<span class="mensagem" th:if="${#fields.hasErrors('subtitulo')}"
+								th:errors="*{subtitulo}"></span>
+						</div>
+					</div>
+						<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Corpo da notícia :</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" th:field="*{corpo}">
+						</div>
+						<div class="col-sm-5">
+							<span class="mensagem" th:if="${#fields.hasErrors('corpo')}"
+								th:errors="*{corpo}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Autor:</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" th:field="*{autor}">
+						</div>
+						<div class="col-sm-5">
+							<span class="mensagem" th:if="${#fields.hasErrors('autor')}"
+								th:errors="*{autor}"></span>
+						</div>
+					</div>
+					
+					<input class="btn btn-primary" type="submit" value="Gravar" /> 
+						<a class="btn btn-primary" href="/noticia/listar">Cancelar</a>
+				</form>
+			</div>
+		</div>
+	</div>
