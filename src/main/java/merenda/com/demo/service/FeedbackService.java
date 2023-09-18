@@ -1,4 +1,4 @@
-package br.ifms.merenda.service;
+package merenda.com.demo.service;
 
 //import java.util.List;
 

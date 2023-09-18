@@ -1,7 +1,8 @@
-package br.ifms.merenda.repository;
+package merenda.com.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import br.ifms.merenda.model.Noticia;
+
+import merenda.com.demo.model.Noticia;
 
 public interface NoticiaRepository extends JpaRepository<Noticia, Long> {
 

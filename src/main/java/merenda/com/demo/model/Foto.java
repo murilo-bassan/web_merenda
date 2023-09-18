@@ -1,4 +1,4 @@
-package br.ifms.merenda.model;
+package merenda.com.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

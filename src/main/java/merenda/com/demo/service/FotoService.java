@@ -1,4 +1,4 @@
-package br.ifms.merenda.service;
+package merenda.com.demo.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,8 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.ifms.merenda.model.Foto;
-import br.ifms.merenda.repository.FotoRepository;
+import merenda.com.demo.model.Foto;
+import merenda.com.demo.repository.FotoRepository;
 
 
 @Service

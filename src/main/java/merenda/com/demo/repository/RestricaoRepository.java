@@ -1,8 +1,8 @@
-package br.ifms.merenda.repository;
+package merenda.com.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.ifms.merenda.model.Restricao;
+import merenda.com.demo.model.Restricao;
 
 public interface RestricaoRepository extends JpaRepository<Restricao, Long> {
 

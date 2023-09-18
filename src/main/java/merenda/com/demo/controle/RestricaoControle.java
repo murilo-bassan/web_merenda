@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ifms.merenda.controller.utils.FileUtils;
-import br.ifms.merenda.dto.RestricaoCreate;
-import br.ifms.merenda.excecao.FotoNotFoundExcpetion;
-import br.ifms.merenda.service.RestricaoService;
 import jakarta.validation.Valid;
+import merenda.com.demo.dto.RestricaoCreate;
+import merenda.com.demo.excecao.FotoNotFoundExcpetion;
 import merenda.com.demo.modelo.Restricao;
+import merenda.com.demo.service.RestricaoService;
+import merenda.com.demo.utils.FileUtils;
 
 @Controller
 @RequestMapping("/restricao")

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ifms.merenda.service.FeedbackService;
 import jakarta.validation.Valid;
 import merenda.com.demo.modelo.Feedback;
 //import merenda.com.demo.servico.FeedbackServico;
+import merenda.com.demo.service.FeedbackService;
 
 @Controller
 @RequestMapping("/feedback")
