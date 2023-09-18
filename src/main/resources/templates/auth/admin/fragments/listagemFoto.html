@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+
+<body>
+
+<table th:fragment="listaFoto" class="table-borderless">	
+			<tr class = "nova">
+				<td ><a class="btn btn-primary" href="/noticia/{noticiaId}/adicionar-fotos"><i class="bi bi-plus-circle-fill"></i></a></td>
+			</tr>
+		<tbody class = "container-grid">
+	
+			<tr class = "empty" th:if="${noticia.fotos.empty}">
+				<td  colspan="2"><i class="bi bi-slash-circle"></i></td>
+			</tr>
+			<tr class = "card"  th:each="foto : ${noticia.fotos}">
+			
+			
+			<td><img th:src="${foto.url}" class="imagem"></td>
+			
+			
+			<td class = "botao">
+					<a class="apagar" 
+					   th:href="@{/noticia/admin/apagarFoto/{idNoticia}/{idFoto}(idNoticia=${noticia.id}, (idFoto=${foto.id})}"
+					   th:data-confirm-delete="|Você gostaria de apagar a foto de ${noticia.titulo}?|"
+  					   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					  <i class="bi bi-trash-fill"></i></a>
+					  
+							  </td>
+				
+		
+			</tr>
+		</tbody>
+	</table>    
+
+
+</body>
+</html>

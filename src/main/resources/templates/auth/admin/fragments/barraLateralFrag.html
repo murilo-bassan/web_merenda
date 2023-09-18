@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div th:fragment="sideBar">
+		<aside id="sidebar" class="sidebar">
+
+			<ul class="sidebar-nav" id="sidebar-nav">
+				
+				<li class="nav-item"><a class="nav-link collapsed" href="/"> <i class="bi bi-grid"></i> <span>Página Inicial</span>
+					</a></li>
+				<!-- End Dashboard Nav -->
+
+				<li class="nav-item"><a class="nav-link collapsed" data-bs-target="#components-nav"
+						data-bs-toggle="collapse" href="#">
+						<i class="bi bi-menu-button-wide"></i><span>Gerenciamento</span><i class="bi bi-chevron-down ms-auto"></i>
+					</a>
+					<ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+						<li>
+							<a th:href="@{/noticia/listar}"><i class="bi bi-stickies"></i> <span>Notícias</span></a>
+						</li>
+						<li>
+							<a th:href="@{/cardapio/listar}"> <i class="bi bi-file-earmark-text"></i><span>Cardápio</span></a>
+						</li>
+						<li>
+							<a th:href="@{/restricao/listar}"> <i class="bi bi-x-circle-fill"></i><span>Restrições</span></a>
+						</li>
+						<li>
+							<a th:href="@{/feedback/listar}"> <i class="bi bi-envelope-paper"></i><span>Feedbacks</span></a>
+						</li>
+						
+					</ul>
+				</li>
+				
+			</ul>
+
+		</aside>
+
+	</div>
+</body>
+
+</html>

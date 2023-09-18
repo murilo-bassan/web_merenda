@@ -1,0 +1,15 @@
+package br.ifms.merenda.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/admin")
+public class IndexAdmin {
+
+	@GetMapping("/index")
+	public String principal() {
+		return "/auth/admin/index-admin";
+	}
+}
