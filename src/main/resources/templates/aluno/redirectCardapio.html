@@ -28,9 +28,10 @@
 
         }
 
+        /*
         .container{
             text-align: center;
-        }
+        }*/
         
 </style>
 
@@ -38,9 +39,9 @@
   
   <div th:insert="fragment/navbar"></div>
   
-    <div class = "container">
-            <div class="row">
-                <div class="col-md-6">     <!-- verificar alinhamentos das colunas bootstrap-->
+    <div class = "container ">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-auto">     <!-- verificar alinhamentos das colunas bootstrap-->
                     <div class="configdiv">
                         <h1>Cardápio Semanal</h1>  
                             <p> Confira qual será a merenda servida durante a semana  19/06 - 23/06</p>
@@ -51,7 +52,7 @@
                             </a>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col">
                     <img src="Aluno-img-cardapio.png" alt="Aluno-img-cardapio" width="50%">
                 </div>
             </div>     
