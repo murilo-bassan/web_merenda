@@ -27,7 +27,7 @@ import merenda.com.demo.servico.FeedbackServico;
 
 @Controller
 @RequestMapping("/aluno")
-public class Controle {
+public class AlunoControle {
 	
 	
 	@Autowired
