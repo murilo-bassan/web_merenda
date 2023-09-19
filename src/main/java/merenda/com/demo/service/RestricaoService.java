@@ -24,10 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import merenda.com.demo.model.Foto;
+//import merenda.com.demo.modelo.Foto;
 import merenda.com.demo.modelo.Restricao;
 import merenda.com.demo.repositorio.RestricaoRepositorio;
-import merenda.com.demo.repository.FotoRepository;
+//import merenda.com.demo.repositorio.FotoRepositorio;
 
 
 @Service

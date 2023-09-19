@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import merenda.com.demo.modelo.Feedback;
+import merenda.com.demo.repositorio.FeedbackRepositorio;
 //import merenda.com.demo.servico.FeedbackServico;
 import merenda.com.demo.service.FeedbackService;
 
@@ -21,6 +22,15 @@ public class FeedbackControle {
 
 	@Autowired
 	FeedbackService feedbackService;
+	
+	@Autowired
+	FeedbackRepositorio feedbackRepositorio;
+	
+	@GetMapping("/listar")
+	public String listarFeedback(Model model) {
+		model.addAttribute("feedbacks", feedbackRepositorio.findAll());		
+		return "/auth/admin/admin-listar-feedbacks";	
+	}
 	
 	@GetMapping("/redirectFeedback")
 	public String redirecionarFeedback(Model model) {
