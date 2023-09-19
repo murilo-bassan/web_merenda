@@ -56,8 +56,8 @@ public class FeedbackControle {
 		}
 		
 		feedbackService.criarFeedback(feedback);
-		attributes.addFlashAttribute("mensagem", "Feedback salva com sucesso!");
-		return "redirect:/redirectFeedback";
+		attributes.addFlashAttribute("mensagem", "Feedback salvo com sucesso!");
+		return "auth/aluno/redirectFeedback";
 	}
 	
 }

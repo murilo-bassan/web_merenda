@@ -85,8 +85,8 @@ public class RestricaoControle {
 				}
 			}
 		}
-		attributes.addFlashAttribute("mensagem", "Restricao adicionada com sucesso!");
-		return "redirect:/aluno/pagRestricao";
+		attributes.addFlashAttribute("mensagemRestricao", "Restricao adicionada com sucesso!");
+		return "auth/aluno/redirectRestricoes";
 	}
 	
 }

@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //import merenda.com.demo.servico.RestricaoServico;
 
 @Controller
-@RequestMapping("/aluno")
 public class AlunoControle {
 	
 
