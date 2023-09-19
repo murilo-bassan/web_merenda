@@ -67,10 +67,10 @@ public class RestricaoControle {
 		Map<String, String> map = null;
 		for (MultipartFile file : restricaoCreate.getPdf()) {
 			if (!file.isEmpty()) {
-				if (!fileUtils.isImagem(file.getContentType())) {
+				/*if (!fileUtils.isImagem(file.getContentType())) {
 					System.out.println(file.getContentType());
 					throw new FotoNotFoundExcpetion("Não é uma foto");
-				}
+				}*/
 				try {
 					map = restricaoService.salvarPdfServidor(file, uriUpload);
 					Restricao restricao = new Restricao();
