@@ -1,4 +1,4 @@
-package br.ifms.merenda.service;
+package merenda.com.demo.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,20 +24,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.ifms.merenda.model.Foto;
-import br.ifms.merenda.repository.FotoRepository;
-import merenda.com.demo.modelo.Restricao;
-import merenda.com.demo.repositorio.RestricaoRepositorio;
+import merenda.com.demo.modelo.Foto;
+import merenda.com.demo.repositorio.FotoRepositorio;
 
 
 @Service
-public class RestricaoService {
+public class FotoService {
 
 	@Autowired
-	private RestricaoRepositorio restricaoRepositorio;
+	private FotoRepositorio fotoRepositorio;
 
-	public Restricao gravarRestricao(Restricao restricao) {
-		return restricaoRepositorio.save(restricao);
+	public Foto gravarFoto(Foto foto) {
+		return fotoRepositorio.save(foto);
 	}
 
 	/*
@@ -67,7 +65,7 @@ public class RestricaoService {
 	}
 
 	*/
-	public Map<String, String> salvarPdfServidor(MultipartFile file, String uri) throws Exception {
+	public Map<String, String> salvarFotoServidor(MultipartFile file, String uri) throws Exception {
 		byte[] byteArr = file.getBytes();
 		HttpEntity httpEntity = MultipartEntityBuilder.create()
 				.addBinaryBody("file", byteArr, ContentType.MULTIPART_FORM_DATA, file.getOriginalFilename()).build();

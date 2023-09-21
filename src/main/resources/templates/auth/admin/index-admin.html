@@ -1,7 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<head th:replace="fragments/cssJs :: head">
+<head th:replace="fragment/cssJs :: head">
 </head>
 
 <body>
@@ -11,7 +14,7 @@
 			<nav class="header-nav ml-auto">
 				<div class="d-flex flex-row bd-highlight mb-3 messages" >
 					<div class="p-2 bd-highlight">*Logo*</div>
-					<div class="p-2 bd-highlight message-item" >Merenda IFMS</div>
+					<div class="p-2 bd-highlight message-item"> Merenda IFMS</div>
 				</div>
 			</nav>
 			<nav class="header-nav ms-auto">
@@ -21,7 +24,7 @@
 	<!-- ======= End NavBar ======= -->
 
 	<!-- ======= Sidebar ======= -->
-	<div th:insert="auth/admin/fragments/barraLateralFrag :: sideBar"></div>
+	<div th:insert="/auth/admin/fragments/barraLateralFrag :: sideBar"></div>
 	<!-- End Sidebar-->
 	
 	
@@ -59,7 +62,7 @@
 		class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
-	<th:block th:insert="fragments/cssJs :: js" th:remove="tag"></th:block>
+	<th:block th:insert="fragment/cssJs :: js" th:remove="tag"></th:block>
 
 </body>
 </html>

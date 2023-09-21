@@ -41,20 +41,20 @@ body {
 			<div class="col-md-6">
 				<!-- verificar alinhamentos das colunas bootstrap-->
 				<div class="alert alert-success alert-dismissible fade show"
-					th:if="${mensagem}">
+					th:if="${mensagemRestricao}">
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-					<span th:text="${mensagem}"></span>
+					<span th:text="${mensagemRestricao}"></span>
 				</div>
 				<h1>Restrições</h1>
 				<p>Se voce tem alguma restricao a algum alimento, clique no botao e
 				preencha o formulario</p>
-				<a th:href="@{/pagRestricoes}">
+				<a th:href="@{/restricao/pagRestricoes}">
 					<button type="button" class="btn btn-success btn-custom">
 						Clique aqui</button>
 				</a>
 			</div>
 			<div class="col-md-6">
-				<img src="imagens/Captura de Tela 2023-09-13 às 10.44.48.png"
+				<img src="/imagens/Captura de Tela 2023-09-13 às 10.44.48.png"
 					alt="imagens/Captura de Tela 2023-09-13 às 10.44.48" width="50%">
 			</div>
 		</div>

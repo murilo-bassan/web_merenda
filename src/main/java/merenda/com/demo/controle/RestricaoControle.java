@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ifms.merenda.controller.utils.FileUtils;
-import br.ifms.merenda.dto.RestricaoCreate;
-import br.ifms.merenda.excecao.FotoNotFoundExcpetion;
-import br.ifms.merenda.service.RestricaoService;
 import jakarta.validation.Valid;
+import merenda.com.demo.dto.RestricaoCreate;
+import merenda.com.demo.excecao.FotoNotFoundExcpetion;
 import merenda.com.demo.modelo.Restricao;
+import merenda.com.demo.repositorio.RestricaoRepositorio;
+import merenda.com.demo.service.RestricaoService;
+import merenda.com.demo.utils.FileUtils;
 
 @Controller
 @RequestMapping("/restricao")
@@ -27,7 +28,16 @@ public class RestricaoControle {
 	@Autowired
 	RestricaoService restricaoService;
 	
+	@Autowired
+	RestricaoRepositorio restricaoRepositorio;
+	
 	public static String uriRoot = "http://10.3.36.144:8081";
+	
+	@GetMapping("/listar")
+	public String listarRestricoes(Model model) {
+		model.addAttribute("restricoes", restricaoRepositorio.findAll());		
+		return "/auth/admin/admin-listar-restricoes";	
+	}	
 
 	@GetMapping("/redirectRestricoes")
 	public String redirecionarRestricoes(Model model) {
@@ -57,10 +67,10 @@ public class RestricaoControle {
 		Map<String, String> map = null;
 		for (MultipartFile file : restricaoCreate.getPdf()) {
 			if (!file.isEmpty()) {
-				if (!fileUtils.isImagem(file.getContentType())) {
+				/*if (!fileUtils.isImagem(file.getContentType())) {
 					System.out.println(file.getContentType());
 					throw new FotoNotFoundExcpetion("Não é uma foto");
-				}
+				}*/
 				try {
 					map = restricaoService.salvarPdfServidor(file, uriUpload);
 					Restricao restricao = new Restricao();
@@ -75,8 +85,8 @@ public class RestricaoControle {
 				}
 			}
 		}
-		attributes.addFlashAttribute("mensagem", "Restricao adicionada com sucesso!");
-		return "redirect:/aluno/pagRestricao";
+		attributes.addFlashAttribute("mensagemRestricao", "Restricao adicionada com sucesso!");
+		return "auth/aluno/redirectRestricoes";
 	}
 	
 }
