@@ -1,4 +1,4 @@
-package br.ifms.merenda.dto;
+package merenda.com.demo.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 

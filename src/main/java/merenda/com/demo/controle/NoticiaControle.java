@@ -1,4 +1,4 @@
-package br.ifms.merenda.controller;
+package merenda.com.demo.controle;
 
 import java.util.List;
 import java.util.Map;
@@ -6,16 +6,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.ifms.merenda.repository.FotoRepository;
-import br.ifms.merenda.repository.NoticiaRepository;
-import br.ifms.merenda.service.FotoService;
 import jakarta.validation.Valid;
-import br.ifms.merenda.controller.utils.FileUtils;
-import br.ifms.merenda.dto.NoticiaCreate;
-import br.ifms.merenda.excecao.FotoNotFoundExcpetion;
-import br.ifms.merenda.model.Foto;
-import br.ifms.merenda.model.Noticia;
-
+import merenda.com.demo.dto.NoticiaCreate;
+import merenda.com.demo.excecao.FotoNotFoundExcpetion;
+import merenda.com.demo.modelo.Foto;
+import merenda.com.demo.modelo.Noticia;
+import merenda.com.demo.repositorio.FotoRepositorio;
+import merenda.com.demo.repositorio.NoticiaRepositorio;
+import merenda.com.demo.service.FotoService;
+import merenda.com.demo.utils.FileUtils;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,16 +32,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/noticia")
-public class NoticiaController {
+public class NoticiaControle {
 
 	@Autowired
-	private NoticiaRepository noticiaRepository;
+	private NoticiaRepositorio noticiaRepository;
 	
 	@Autowired
 	private FotoService fotoService;
 	
 	@Autowired
-	private FotoRepository fotoRepository;
+	private FotoRepositorio fotoRepository;
 	
 	public static String uriRoot = "http://10.3.36.144:8081";
 	

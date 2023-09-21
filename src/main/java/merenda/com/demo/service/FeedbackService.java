@@ -1,4 +1,4 @@
-package merenda.com.demo.servico;
+package merenda.com.demo.service;
 
 //import java.util.List;
 
@@ -9,7 +9,7 @@ import merenda.com.demo.modelo.Feedback;
 import merenda.com.demo.repositorio.FeedbackRepositorio;
 
 @Service
-public class FeedbackServico {
+public class FeedbackService {
 
 		@Autowired
 		private FeedbackRepositorio feedbackRepositorio;

@@ -1,4 +1,4 @@
-package br.ifms.merenda.excecao;
+package merenda.com.demo.excecao;
 
 public class FotoNotFoundExcpetion extends Exception{
 
