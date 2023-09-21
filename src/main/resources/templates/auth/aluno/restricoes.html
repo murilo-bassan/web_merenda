@@ -17,6 +17,31 @@
 <link th:href="@{/assets/css.style.css}" rel="stylesheet" />
 <head th:replace="fragment/cssJs :: head"></head>
 <title>Insert title here</title>
+
+	<style>
+	/*.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh; /* Centralizar verticalmente na janela do navegador x
+	} */
+
+	.btn-custom{
+            background-color: #016A13; 
+            border-radius: 50px;
+            box-shadow: 2px  2px  #016A13;
+
+    }
+
+	/* Estilos adicionais do seu código aqui */
+	.btn-custom {
+		background-color: #016A13;
+		border-radius: 50px;
+		box-shadow: 2px 2px #016A13;
+	}
+</style>
+
+
 </head>
 
 <style>
@@ -26,13 +51,8 @@
 		
 		}
 		
-        .btn-custom{
-            background-color: #016A13; 
-            border-radius: 50px;
-            box-shadow: 2px  2px  #016A13;
-
-        }
-
+       
+       
 </style>
 <body>
 	<div th:insert="fragment/navbar"></div>
@@ -47,7 +67,6 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 					<span th:text="${mensagem}"></span>
 				</div> 
-				
 				<form th:action="@{/restricao/salvar}" th:object="${novaRestricao}" method="post" enctype="multipart/form-data">
 				
 				<div class="row mb-3">
@@ -105,7 +124,7 @@
 					
 				</form>
 				
-			</div>
+				
 		</div>
 	</div>
 </body>
