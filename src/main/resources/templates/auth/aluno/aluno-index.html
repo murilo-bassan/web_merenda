@@ -60,20 +60,21 @@
 
     <div class="container" style="padding: 20px;">
        
-<table th:fragment="lista" class="table table-sm">
+<!--<table th:fragment="lista" class="table table-sm">
     <tbody class = "container-grid">
 
-      <tr th:if="${noticias.empty}">
-        <td  colspan="2"><i class="bi bi-slash-circle"></i></td>
-      </tr>
-      <tr class = "card"  th:each="noticia:${noticias}">
-      
-      
-      <th:block th:if="${noticia.fotos.empty}">
-      <td> Sem Imagem </td>
-      
-      </th:block>
-      <th:block th:unless="${noticia.fotos.empty}">
+      <tr class = "empty" th:if="${noticias == null}">
+				<td  colspan="2"><i class="bi bi-slash-circle"></i></td>
+			</tr>
+			<tr class = "card"  th:each="noticia : ${noticias}">
+			
+			
+			<th:block th:if="${noticia.fotos == null}">
+			<td> Sem Imagem </td>
+			
+
+      <th:block th:unless="${noticia.fotos == null}">
+
       <td> <td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td> </td>
       
       </th:block>
@@ -86,10 +87,10 @@
     </tbody>
 </table>   
             
-            
+-->
             
 
-              <!-- Card de Notícia 2 -->
+              <!-- Card de Notícia 2 
                 <div class="card">
                   <img src="imagem.jpg" class="card-img-top" alt="Imagem da Notícia">
                   <div class="card-body">
@@ -100,10 +101,7 @@
                 </div>
                 
               </div>
-            </div>  
-            
-        </div>
-    </div>
+          -->
     
     <!--<main id="main" class="main">
 
@@ -111,5 +109,23 @@
 
     </main>
 -->
+<table th:fragment="lista" class="table table-sm">	
+
+  <tr class = "empty" th:if="${noticias == null}">
+    <td  colspan="2"><i class="bi bi-slash-circle"></i></td>
+  </tr>
+  <tr class = "card"  th:each=" noticia : ${noticias}">
+
+    <td><span th:text="${noticia.titulo}" class="titulo"> Título </span></td>
+    <td><span th:text="${noticia.subtitulo}" class="subtitulo"> Subtítulo</span></td>
+    <td><span th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Corpo</span></td>
+    <td><span th:text="${noticia.autor}"> Autor: </span></td>
+  </tr>
+
+  
+</table>    
+
+
+
 </body>
 </html>
