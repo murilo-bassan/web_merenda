@@ -16,12 +16,11 @@
 </head>
 
 <style>
-
-		.container{
-			margin-top: 20px;
-		
-		}
-		
+        /*.container{
+            margin-top: 20px;
+        
+        }
+        
         .btn-custom{
             background-color: #016A13; 
             border-radius: 50px;
@@ -29,69 +28,99 @@
 
         }
 
+        body{
+            align-items: center;  
+        }*/
+        
+        .btn-custom {
+            background-color: #016A13;
+            border-radius: 50px;
+            box-shadow: 2px 2px #016A13;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 10px;
+            
+        }
+        
+        .center-horizontally {
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            margin: 0;
+        }
+        
+        .forms {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
         
 </style>
 
 <body>
-	<div th:insert="fragment/navbar"></div>
+    <div th:insert="fragment/navbar"></div>
 
-	<div class="container">
-		<div class="row" style="padding-bottom: 30px;">
-			<div class="col">
-				<h2>Feedback</h2>
-				
-				<div class="alert alert-success alert-dismissible fade show"
-					th:if="${mensagem}">
-					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-					<span th:text="${mensagem}"></span>
-				</div> 
-				
-				<form th:action="@{/feedback/gravarFeedback}" th:object="${novoFeedback}" method="post">
-				
-				<div class="row mb-3">
-				
-					<label class="col-sm-1 col-form-label">Nome do Aluno:</label>
-					
-					<div class="col-sm-5">
-						<input class="form-control" type="text" th:field="*{nomeAluno}">
-					</div>
-					
-					<div class="col-sm-5">
-					
-						<span class="mensagem"
-						th:if="${#fields.hasErrors('nomeAluno')}" th:errors="*{nomeAluno}">
-						</span>
-						
-					</div>
-					
-					
-				</div>
-				
-				<div class="row mb-3">
-				
-					<label class="col-sm-1 col-form-label">Descrição:</label>
-					
-					<div class="col-sm-5">
-						<input class="form-control" type="text" th:field="*{descricaoFeedback}"> 
-					</div> 
-					<!--tipo & em c  -->
-					
-				 <div class="col-sm-5">
-					
-						<span class="mensagem" 
-						th:if="${#fields.hasErrors('descricaoFeedback')}" th:errors="*{descricaoFeedback}">
-						</span>
-						
-					</div>
-					
-				</div>
+    <div class="container">
+        <div class="forms">
+                <h2>Feedback</h2>
+                
+                <div class="alert alert-success alert-dismissible fade show"
+                    th:if="${mensagem}">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <span th:text="${mensagem}"></span>
+                </div> 
+                
+                <form th:action="@{/feedback/gravarFeedback}" th:object="${novoFeedback}" method="post">
+                
+                <div class="row mb-3">
+                
+                    <label>Nome do Aluno:</label>
+                    
+                    <div class="formulario">
+                        <input class="form-control" type="text" th:field="*{nomeAluno}">
+                    </div>
+                    
+                    <div class="col-sm-5">
+                    
+                        <span class="mensagem"
+                        th:if="${#fields.hasErrors('nomeAluno')}" th:errors="*{nomeAluno}">
+                        </span>
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+                <div class="row mb-3">
+                
+                    <label>Descrição:</label>
+                    
+                    <div class="formulario">
+                        <input class="form-control" type="text" th:field="*{descricaoFeedback}"> 
+                    </div> 
+                    <!--tipo & em c  -->
+                    
+                 <div class="col-sm-5">
+                    
+                        <span class="mensagem" 
+                        th:if="${#fields.hasErrors('descricaoFeedback')}" th:errors="*{descricaoFeedback}">
+                        </span>
+                        
+                    </div>
+                    
+                </div>
 
-					<input class="btn btn-success btn-custom" type="submit" value="Enviar"/> 
-					
-				</form>
-				
-			</div>
-		</div>
-	</div>
+                    <input class="btn btn-success btn-custom" type="submit" value="Enviar"/> 
+                    
+                </form>
+                
+            </div>
+        </div>
 </body>
 </html>
