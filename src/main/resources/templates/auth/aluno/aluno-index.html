@@ -59,41 +59,34 @@ body {
 -->
 
     <div class="container" style="padding: 20px;">
-        <div class="row">
-          <div class="d-flex justify-content-center">
-            <!-- Card de Notícia 1 -->
-            table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Nome</th>
-						<th>Idade</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${listaEstudantes.empty}">
-						<td colspan="3">Não existem estudantes.</td>
-					</tr>
-					<tr th:each="estudante : ${listaEstudantes}">
-						<td><span th:text="${estudante.id}"></span></td>
-						<td><span th:text="${estudante.nome}"></span></td>
-						<td><span th:text="${estudante.idade}"></span></td>
-						<td><a class="fa-regular fa-trash-can icon-dark btn-delete"
-							th:href="@{/apagar/{id}(id=${estudante.id})}"
-							th:data-confirm-delete="|Você gostaria de apagar ${estudante.nome}?|"
-							th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
-										      return false">
+       
+<table th:fragment="lista" class="table table-sm">
+<tbody class = "container-grid">
 
-						</a>	
-						&nbsp;
-						<a class="fa-regular fa-pen-to-square icon-dark"
-							th:href="@{/editar/{id}(id=${estudante.id})}"></a>						
-						</td>
-											
-					</tr>
-				</tbody>
-			</table>
+  <tr th:if="${noticias.empty}">
+    <td  colspan="2"><i class="bi bi-slash-circle"></i></td>
+  </tr>
+  <tr class = "card"  th:each="noticia : ${noticias}">
+  
+  
+  <th:block th:if="${noticia.fotos.empty}">
+  <td> Sem Imagem </td>
+  
+  </th:block>
+  <th:block th:unless="${noticia.fotos.empty}">
+  <td> <td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td> </td>
+  
+  </th:block>
+  
+  
+    
+    <td><span th:text="${noticia.titulo}" class="titulo"> Título </span></td>
+    <td><span th:text="${noticia.subtitulo}" class="subtitulo"> Subtítulo</span></td>
+    <td><span th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Corpo</span></td>
+    <td><span th:text="${noticia.autor}"> Autor: </span></td>
+    
+</tbody>
+</table>   
             
             
             
