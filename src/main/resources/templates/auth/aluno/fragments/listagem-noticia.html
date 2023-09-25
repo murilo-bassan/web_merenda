@@ -7,10 +7,7 @@
 </head>
 <body>
     <table th:fragment="lista" class="table table-sm">	
-        <tr class = "nova">
-            <td ><a class="btn btn-primary" href="/noticia/nova"><i class="bi bi-plus-circle-fill"></i></a></td>
-        </tr>
-    <tbody class = "container-grid">
+     <tbody class = "container-grid">
 
         <tr class = "empty" th:if="${noticias.empty}">
             <td  colspan="2"><i class="bi bi-slash-circle"></i></td>
