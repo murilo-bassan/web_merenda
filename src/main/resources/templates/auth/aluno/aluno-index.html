@@ -62,13 +62,22 @@ body {
         <div class="row">
           <div class="d-flex justify-content-center">
             <!-- Card de Notícia 1 -->
+            
+            <main id="main" class="main">
+			
+		
+              <div  th:insert="auth/aluno/fragments/listagem-noticia :: lista"></div>
+                
+                    
+          </main>
+            
+            
             <div class="col-md-4">
-                <div class="card" >
+                <div class="card" th:object="${objetoEstudante}">
                     <img src="imagem.png" class="card-img-top" alt="Imagem da Notícia" width="50">
                     <div class="card-body">
-                        <h5 class="card-title">Título da Notícia 1</h5>
+                        <h5 class="card-title"> Título da Notícia 1</h5>
                         <p class="card-text">Subtiutlo da notícia 1.</p>
-                        <a href="#" class="btn btn-primary">Leia mais</a>
                     </div>
                 </div>
 
