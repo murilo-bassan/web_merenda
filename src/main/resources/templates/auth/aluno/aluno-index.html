@@ -62,24 +62,41 @@ body {
         <div class="row">
           <div class="d-flex justify-content-center">
             <!-- Card de Notícia 1 -->
+            table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th>Idade</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${listaEstudantes.empty}">
+						<td colspan="3">Não existem estudantes.</td>
+					</tr>
+					<tr th:each="estudante : ${listaEstudantes}">
+						<td><span th:text="${estudante.id}"></span></td>
+						<td><span th:text="${estudante.nome}"></span></td>
+						<td><span th:text="${estudante.idade}"></span></td>
+						<td><a class="fa-regular fa-trash-can icon-dark btn-delete"
+							th:href="@{/apagar/{id}(id=${estudante.id})}"
+							th:data-confirm-delete="|Você gostaria de apagar ${estudante.nome}?|"
+							th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
+										      return false">
+
+						</a>	
+						&nbsp;
+						<a class="fa-regular fa-pen-to-square icon-dark"
+							th:href="@{/editar/{id}(id=${estudante.id})}"></a>						
+						</td>
+											
+					</tr>
+				</tbody>
+			</table>
             
-            <main id="main" class="main">
-			
-		
-              <div  th:insert="fragments/listagem-noticia :: lista"></div>
-                
-                    
-          </main>
             
             
-            <div class="col-md-4">
-                <div class="card" th:object="${objetoEstudante}">
-                    <img src="imagem.png" class="card-img-top" alt="Imagem da Notícia" width="50">
-                    <div class="card-body">
-                        <h5 class="card-title"> Título da Notícia 1</h5>
-                        <p class="card-text">Subtiutlo da notícia 1.</p>
-                    </div>
-                </div>
 
               <!-- Card de Notícia 2 -->
                 <div class="card">
@@ -96,6 +113,12 @@ body {
             
         </div>
     </div>
+    
+    <!--<main id="main" class="main">
 
+    <div  th:insert="auth/aluno/fragments/listagem-noticia :: lista"></div>            
+
+    </main>
+<!-->
 </body>
 </html>

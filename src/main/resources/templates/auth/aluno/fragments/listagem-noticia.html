@@ -9,7 +9,7 @@
     <table th:fragment="lista" class="table table-sm">	
      <tbody class = "container-grid">
 
-        <tr class = "empty" th:if="${noticias.empty}">
+        <!--<tr class = "empty" th:if="${noticias.empty}">
             <td  colspan="2"><i class="bi bi-slash-circle"></i></td>
         </tr>
         <tr class = "card"  th:each="noticia : ${noticias}">
@@ -17,7 +17,7 @@
         
         <th:block th:if="${noticia.fotos.empty }">
         <td> Sem Imagem </td>
-        
+        <!-->
         </th:block>
         <th:block th:unless="${noticia.fotos.empty}">
         <td> <td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td> </td>
