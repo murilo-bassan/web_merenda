@@ -16,11 +16,26 @@
 <title>Index aluno</title>
 
 </head>
+
 <style>
   body {
       background-color: black;
   }
-  
+
+  .container-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0;
+  }
+
+  h1{
+    text-align: center;
+  }
+  .card{
+    margin: 15px;
+  }
   </style>
 
 <body>
@@ -53,24 +68,29 @@
     <span class="visually-hidden">Próximo</span>
   </button>
 </div>
--->
+--> 
 
-    <div class="container" style="padding: 20px;">
+    <div class="container container-custom" style="padding: 20px;">
+
      
-      <div class="col-md-4">
-        <div class="card" th:each="noticia : ${noticias}">
-            <div class="row" >
-                <div class="col-md-4">
-                    <img th:src="${noticia.fotos.get(0).url}" class="card-img" alt="Imagem da Notícia">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${noticia.titulo}" >Título da Notícia 1</h5>
-                        <p class="card-text" th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Descrição da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>  
+        <div class="col-md-4">
+          <div class="card"  th:each="noticia : ${noticias} ">  <!-- uma sub lista contendo só as duas ultimas noticias-->
+              <div class="row" >
+                  <div class="col-md-4">
+                      <img th:src="${noticia.fotos.get(0).url}" class="card-img" alt="Imagem da Notícia">
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title" th:text="${noticia.titulo}" >Título da Notícia 1</h5>
+                          <p class="card-text" th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Descrição da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        </div> 
+    </div> 
+    </div>
   </body>
 </html>

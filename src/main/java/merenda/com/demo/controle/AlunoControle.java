@@ -43,7 +43,9 @@ public class AlunoControle {
 	@GetMapping("/")
     public String noticias(Model model) {	
 		List<Noticia> noticias = noticiaRepository.findAll();
+	
 		model.addAttribute("noticias", noticias);		
+	
 		return "/auth/aluno/aluno-index";
     }
 	
