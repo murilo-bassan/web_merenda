@@ -55,7 +55,7 @@ public class RestricaoControle {
 	
 	
 	@PostMapping("/salvar")
-	public String salvarNoticia(@ModelAttribute("novaRestricao") @Valid RestricaoCreate restricaoCreate, BindingResult result, 
+	public String salvarRestricao(@ModelAttribute("novaRestricao") @Valid RestricaoCreate restricaoCreate, BindingResult result, 
 				RedirectAttributes attributes, Model model) throws FotoNotFoundExcpetion {
 		if (result.hasErrors()) {
 		
