@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+	<link rel=""
 
 <title>Cardapio</title>
 </head>
@@ -31,6 +33,24 @@
         .container{
             text-align: center;  
         }
+        
+        .tableHead{
+			background-color: #016A13;
+			color:white;
+		}
+		
+		.title{
+			font-size: 300%;
+			color:  #016A13;
+		}
+		
+		.collumn{
+			color:  #016A13;
+		}
+		
+
+		
+        
 </style>
 
   <body>
@@ -43,11 +63,11 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan = "6" > Cardapio Semanal</th>
+                                <th colspan = "6" class="title"> Cardápio Semanal</th>
                             </tr>
-                          <tr>
+                          <tr class="tableHead">
                             <th scope="col"></th>
-                            <th scope="col">Segunda</th>
+                            <th scope="col" >Segunda</th>
                             <th scope="col">Terça</th>
                             <th scope="col">Quarta</th>
                             <th scope="col">Quinta</th>
@@ -57,7 +77,7 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <th scope="row">Carboidrato</th>
+                            <th scope="row" class="collumn">Carboidrato</th>
                             <td>Bolo</td>
                             <td>Chipa</td>
                             <td>Biscoito</td>
@@ -66,7 +86,7 @@
 
                           </tr>
                           <tr>
-                            <th scope="row">Liquido</th>
+                            <th scope="row" class="collumn">Liquido</th>
                             <td>Suco</td>
                             <td>Letie</td>
                             <td>Suco</td>
@@ -74,7 +94,7 @@
                             <td>Suco</td>
                           </tr>
                           <tr>
-                            <th scope="row">Fruta</th>
+                            <th scope="row" class="collumn">Fruta</th>
                             <td>Maça</td>
                             <td>Banana</td>
                             <td>Abacaxi</td>
@@ -85,7 +105,7 @@
                       </table>
                 </div>
                 <div class="col-md-6">
-                    <img th:src="@{/imagens/Aluno-img-cardapio.png}" alt="Aluno-img-cardapio" width="50%">
+                    <img th:src="@{/imagens/Aluno-img-cardapio.png}" alt="Aluno-img-cardapio" width="80%">
                 </div>
             </div>     
     </div> 
