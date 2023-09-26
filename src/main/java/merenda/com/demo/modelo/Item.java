@@ -1,33 +1,27 @@
 package merenda.com.demo.modelo;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-public class Categoria {
+public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-	@Size(min = 3, message = "O nome da categoria deve ter no mínimo 3 caracteres")
+	@Size(min = 3, message = "O nome do item deve ter no mínimo 3 caracteres")
 	private String nome;
-	
+
 	@NotNull
 	@ManyToOne
-	private Tipo_merenda tipo_merenda;
-	
-	@OneToMany (mappedBy = "categoria")
-	private List<Item> itens;
+	private Categoria categoria;
 
 	public Long getId() {
 		return id;
@@ -45,22 +39,12 @@ public class Categoria {
 		this.nome = nome;
 	}
 
-	public List<Item> getItens() {
-		return itens;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
-
-	public Tipo_merenda getTipo_merenda() {
-		return tipo_merenda;
-	}
-
-	public void setTipo_merenda(Tipo_merenda tipo_merenda) {
-		this.tipo_merenda = tipo_merenda;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}	
 	
-	
 }
-
