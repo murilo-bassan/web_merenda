@@ -5,6 +5,10 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 
 import jakarta.validation.Valid;
 import merenda.com.demo.dto.NoticiaCreate;
@@ -16,6 +20,8 @@ import merenda.com.demo.repositorio.NoticiaRepositorio;
 import merenda.com.demo.service.FotoService;
 import merenda.com.demo.utils.FileUtils;
 
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +32,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -44,10 +51,24 @@ public class NoticiaControle {
 	private FotoRepositorio fotoRepository;
 	
 	public static String uriRoot = "http://10.3.36.144:8081";
+
+	@GetMapping("/")
+    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "8") int size) {	
+		
+		Order order = new Order(Sort.Direction.ASC, "nome");
+
+		Pageable pageable = PageRequest.of(page, size);
+
+		List<Noticia> noticias = noticiaRepository.findAll();
+		model.addAttribute("noticias", noticias); 
+	
+		return "/auth/aluno/aluno-index";
+    }
+	
 	
 	@GetMapping("/listar")
 	public String listarNoticia(Model model) {
-		model.addAttribute("noticias", noticiaRepository.findAll());		
+		model.addAttribute("noticias", noticiaRepository.findAll();		
 		return "/auth/admin/admin-listar-noticias";	
 	}
 	
