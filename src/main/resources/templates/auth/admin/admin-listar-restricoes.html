@@ -26,10 +26,34 @@
 	
 
 	<main id="main" class="main">
-			
-		
-				
-				  	
+		<div class="container">
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descricao</th>
+                <th>Nome do Aluno</th>
+                <th>Comprovante</th>
+                <th><th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${listaRestricoes.empty}">
+                <td colspan="4">Não existem feedbacks.</td>
+            </tr>
+            <tr th:each="restricao : ${listaRestricoes}">
+                <td><span th:text="${restricao.id}"></span></td>
+                <td><span th:text="${restricao.descricaoRestricao}"></span></td>
+                <td><span th:text="${restricao.nomeAluno}"></span></td>
+                <!--<td><span th:text="${restricao.pdf.get().url}"></span></td> -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+	  	
 	</main>
 	<!-- End #main -->
 

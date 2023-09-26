@@ -26,10 +26,37 @@
 	
 
 	<main id="main" class="main">
-			
-		
-				
-				  	
+		<div class="container">
+    <!-- <div class="row" style="padding-bottom: 30px;">
+        <div class="col">
+            <a th:href="@{/novo}" class="btn btn-primary">Novo Estudante</a>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descricao</th>
+                <th>Nome do Aluno</th>
+                <th><th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${listaFeedbacks.empty}">
+                <td colspan="4">Não existem feedbacks.</td>
+            </tr>
+            <tr th:each="feedback : ${listaFeedbacks}">
+                <td><span th:text="${feedback.id}"></span></td>
+                <td><span th:text="${feedback.feedbackDescricao}"></span></td>
+                <td><span th:text="${feedback.nomeAluno}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+	  	
 	</main>
 	<!-- End #main -->
 

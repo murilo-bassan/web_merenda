@@ -35,7 +35,7 @@ public class RestricaoControle {
 	
 	@GetMapping("/listar")
 	public String listarRestricoes(Model model) {
-		model.addAttribute("restricoes", restricaoRepositorio.findAll());		
+		model.addAttribute("listaRestricoes", restricaoRepositorio.findAll());		
 		return "/auth/admin/admin-listar-restricoes";	
 	}	
 
