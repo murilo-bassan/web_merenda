@@ -92,7 +92,7 @@ public class RestricaoControle {
 	@GetMapping("/url")
 	public MultipartFile[] exibirPdf(Model model, RestricaoCreate restricaoCreate) {
 		MultipartFile[] url = restricaoCreate.getPdf();
-		
+		 
 		return url;
 	}
 	
