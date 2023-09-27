@@ -2,6 +2,17 @@
 
 <link th:href="@{/assets/css.style.css}" rel="stylesheet" />
 <head th:replace="fragment/cssJs :: head"></head>
+<style>
+
+.btn-custom{
+            background-color: #016A13; 
+            border-radius: 50px;
+            box-shadow: 2px  2px  #016A13;
+
+        }
+
+
+</style>
 
 <body>
 
@@ -47,7 +58,7 @@
                 <td><span th:text="${restricao.id}"></span></td>
                 <td><span th:text="${restricao.descricaoRestricao}"></span></td>
                 <td><span th:text="${restricao.nomeAluno}"></span></td>
-                <td><span th:text="${restricao}"></span></td> 
+                <!--<td><span th:text="${restricao}"></span></td>-->
                 
                 <!--<td><a th:href = "@{restricao.pdf.get(0).url}"<button>
                 	<img th:src="@{/imagens/Captura de Tela 2023-09-15 às 10.04.10.png}" width="20%">
@@ -57,14 +68,15 @@
                 -->
                 <!--<td><span th:text="${restricao.pdf.get(0).url}"></span></td>-->
                 <!--<td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td>
-                
-                
-                <a th:href = "@{/cardapio/pagCardapio}">
-	                        <button type="button" class="btn btn-success btn-custom">
-	                            Clique aqui
-	                        </button>
-                        </a>
                 -->
+                <td>
+	                <a th:href = "@{restricao/url}">
+		            	<button type="button" class="btn btn-success btn-custom">
+		                	Ver mais
+		                </button>
+	                </a>
+                </td>
+                
             </tr>
             </tbody>
         </table>
