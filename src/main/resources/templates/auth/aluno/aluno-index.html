@@ -23,6 +23,7 @@
   }
 
   .container-custom {
+
     justify-content: center;
     align-items: center;
     height: 50vh;
@@ -73,7 +74,7 @@
 
      
         <div class="col-md-4">
-          <div class="card"  th:each="noticia : ${noticias} ">  <!-- uma sub lista contendo só as duas ultimas noticias-->
+          <div class="card"  th:each="noticia : ${noticias} "> 
               <div class="row" >
                   <div class="col-md-4">
                       <img th:src="${noticia.fotos.get(0).url}" class="card-img" alt="Imagem da Notícia">
