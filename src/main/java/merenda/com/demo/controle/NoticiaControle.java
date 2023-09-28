@@ -174,9 +174,8 @@ public class NoticiaControle {
     	
     		return "/auth/admin/admin-alter-noticia";
 
-
     }
-    }
+}
 
 
 

@@ -28,7 +28,8 @@ public class FeedbackControle {
 	
 	@GetMapping("/listar")
 	public String listarFeedback(Model model) {
-		model.addAttribute("feedbacks", feedbackRepositorio.findAll());		
+		
+		model.addAttribute("listaFeedbacks", feedbackRepositorio.findAll());		
 		return "/auth/admin/admin-listar-feedbacks";	
 	}
 	

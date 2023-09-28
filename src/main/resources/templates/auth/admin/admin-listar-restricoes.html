@@ -1,0 +1,106 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/assets/css.style.css}" rel="stylesheet" />
+<head th:replace="fragment/cssJs :: head"></head>
+<style>
+
+.btn-custom{
+            background-color: #016A13; 
+            border-radius: 50px;
+            box-shadow: 2px  2px  #016A13;
+
+        }
+
+
+</style>
+
+<body>
+
+	<!-- ======= NavBar ======= -->
+	<header id="header" class="header fixed-top d-flex align-items-left">
+			<nav class="header-nav ml-auto">
+				<div class="d-flex flex-row bd-highlight mb-3 messages" >
+					<div class="p-2 bd-highlight">*Logo*</div>
+					<div class="p-2 bd-highlight message-item" >Merenda IFMS</div>
+				</div>
+			</nav>
+			<nav class="header-nav ms-auto">
+					<div class="bi bi-person-fill"></div>
+			</nav>
+	</header>
+	<!-- ======= End NavBar ======= -->
+
+	<!-- ======= Sidebar ======= -->
+	<div th:insert="auth/admin/fragments/barraLateralFrag :: sideBar"></div>
+	<!-- End Sidebar-->
+	
+	
+
+	<main id="main" class="main">
+		<div class="container">
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descricao</th>
+                <th>Nome do Aluno</th>
+                <th>Comprovante</th>
+                <th><th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${listaRestricoes.empty}">
+                <td colspan="4">Não existem feedbacks.</td>
+            </tr>
+            <tr th:each="restricao : ${listaRestricoes}">
+                <td><span th:text="${restricao.id}"></span></td>
+                <td><span th:text="${restricao.descricaoRestricao}"></span></td>
+                <td><span th:text="${restricao.nomeAluno}"></span></td>
+                <!--<td><span th:text="${restricao}"></span></td>-->
+                
+                <!--<td><a th:href = "@{restricao.pdf.get(0).url}"<button>
+                	<img th:src="@{/imagens/Captura de Tela 2023-09-15 às 10.04.10.png}" width="20%">
+                </button>
+                </a>
+                </td>
+                -->
+                <!--<td><span th:text="${restricao.pdf.get(0).url}"></span></td>-->
+                <!--<td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td>
+                -->  
+                <td>
+	               <!-- <a th:href="@{/restricao/url/{id}(id=${restricao.id})}" target = "_blank">
+		            	<button type="button" class="btn btn-success btn-custom">
+		                	Ver mais
+		                </button>
+	                </a> -->
+	                
+	                <a th:href="@{/restricao/url/{id}(id=${restricao.id})}" target = "_blank">
+		            	<button type="button" class="btn btn-success btn-custom">
+		                	Ver mais
+		            	</button>
+		            </a>
+            	</td>
+            </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+	  	
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<!--   <div th:insert="auth/footer/footerFrag :: footer"></div> -->
+	<!-- ======= End Footer ======= -->
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<th:block th:insert="fragment/cssJs :: js" th:remove="tag"></th:block>
+</body>
+</html>
