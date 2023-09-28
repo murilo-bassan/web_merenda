@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
 
@@ -52,23 +53,12 @@ public class NoticiaControle {
 	
 	public static String uriRoot = "http://10.3.36.144:8081";
 
-	@GetMapping("/")
-    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "8") int size) {	
-		
-		Order order = new Order(Sort.Direction.ASC, "nome");
-
-		Pageable pageable = PageRequest.of(page, size);
-
-		List<Noticia> noticias = noticiaRepository.findAll();
-		model.addAttribute("noticias", noticias); 
 	
-		return "/auth/aluno/aluno-index";
-    }
 	
 	
 	@GetMapping("/listar")
 	public String listarNoticia(Model model) {
-		model.addAttribute("noticias", noticiaRepository.findAll();		
+		model.addAttribute("noticias", noticiaRepository.findAll());		
 		return "/auth/admin/admin-listar-noticias";	
 	}
 	

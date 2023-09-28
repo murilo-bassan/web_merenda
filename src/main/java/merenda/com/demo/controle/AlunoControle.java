@@ -3,10 +3,11 @@ package merenda.com.demo.controle;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
 import org.springframework.data.domain.PageRequest;
-
+import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort;
 //import java.util.Map;
  
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class AlunoControle {
 	
 
 	@GetMapping("/")
-    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "8") int size) {	
+    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {	
 		
 		Order order = new Order(Sort.Direction.ASC, "nome");
 
