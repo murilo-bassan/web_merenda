@@ -41,9 +41,9 @@ body {
 			<div class="col-md-6">
 				<!-- verificar alinhamentos das colunas bootstrap-->
 				<div class="alert alert-success alert-dismissible fade show"
-					th:if="${mensagem}">
+					th:if="${mensagemFeedback}">
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-					<span th:text="${mensagem}"></span>
+					<span th:text="${mensagemFeedback}"></span>
 				</div>
 				<h1>Feedback</h1>
 				<p>Clique no botao para enviar um feedback sobre a merenda do IF!</p>

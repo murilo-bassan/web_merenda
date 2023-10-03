@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,7 +36,7 @@ public class RestricaoControle {
 	
 	@GetMapping("/listar")
 	public String listarRestricoes(Model model) {
-		model.addAttribute("restricoes", restricaoRepositorio.findAll());		
+		model.addAttribute("listaRestricoes", restricaoRepositorio.findAll());		
 		return "/auth/admin/admin-listar-restricoes";	
 	}	
 
@@ -85,8 +86,40 @@ public class RestricaoControle {
 				}
 			}
 		}
-		attributes.addFlashAttribute("mensagemRestricao", "Restricao adicionada com sucesso!");
+		model.addAttribute("mensagemRestricao", "Restricao adicionada com sucesso!");
 		return "auth/aluno/redirectRestricoes";
 	}
+	
+	@GetMapping("/url/{id}")
+	public String exibirPdf(@PathVariable long id, Model model) {
+		Restricao restricao = restricaoRepositorio.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("id invalido: " + id));
+		model.addAttribute("restricao", restricao);
+		 
+		
+		return "/auth/aluno/pdf";
+	}
+	
+	/*@GetMapping("/listarFotos/{idNoticia}")
+	public String listarFotos(@PathVariable("idNoticia") long idNoticia, Model model) {
+		Noticia noticia = noticiaRepository.findById(idNoticia)
+		.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + idNoticia));
+		model.addAttribute("noticia", noticia);
+		return "auth/admin/admin-listar-alter";
+	}*/
+	
+	/*@GetMapping("/editarPapel/{id}")
+	public String selecionarPapel(@PathVariable("id") long id, Model model) {
+		Optional<Estudante> estudanteVelho = estudanteRepositorio.findById(id);
+		if (!estudanteVelho.isPresent()) {
+            throw new IllegalArgumentException("Estudante inválido:" + id);
+        } 
+		Estudante estudante = estudanteVelho.get();
+	    model.addAttribute("estudante", estudante);
+	    
+	    model.addAttribute("listaPapeis", papelRepositorio.findAll());
+	    
+	    return "/auth/admin/alterar-papel";
+	}*/
 	
 }
