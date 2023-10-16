@@ -80,8 +80,45 @@
   </button>
 </div>-->
 
+<div class="container container-custom" style="padding: 20px;">
+  <div id="noticiasCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+          <div class="carousel-item active" th:each="noticia, iterStat : ${noticias}">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="row">
+                          <div class="col-md-4">
+                              <img th:src="${noticia.fotos.get(0).url}" class="card-img" alt="Imagem da Notícia">
+                          </div>
+                          <div class="col-md-8">
+                              <div class="card-body">
+                                  <h5 class="card-title" th:text="${noticia.titulo}">Título da Notícia 1</h5>
+                                  <p class="card-text" th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Descrição da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Fecha o item do carrossel -->
+              <th:block th:if="${iterStat.index % 3 == 2 or iterStat.last}"></th:block>
+          </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+  </div>
+</div>
 
-    <div class="container container-custom" style="padding: 20px;">
+
+
+<!--=========================-->
+
+<!--    <div class="container container-custom" style="padding: 20px;">
         <div class="col-md-4">
           <div class="card"  th:each="noticia : ${noticias} "> 
               <div class="row" >
@@ -99,6 +136,7 @@
           </div>
         </div> 
     </div> 
+-->
 
 
 
