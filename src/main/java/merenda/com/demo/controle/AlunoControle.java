@@ -68,7 +68,7 @@ public class AlunoControle {
 	private NoticiaRepositorio noticiaRepository;
 	
 
-	@GetMapping("/")
+	@GetMapping("/listar")
     public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {	
 		
 		Order order = new Order(Sort.Direction.ASC, "nome");
@@ -80,9 +80,6 @@ public class AlunoControle {
 	
 		return "/auth/aluno/aluno-index";
     }
-	
-	
-	
 	
 	//@PostMapping("/gravar")
 	//public String gravarEstudante(@ModelAttribute("novoEstudante") @Valid Estudante estudante,
