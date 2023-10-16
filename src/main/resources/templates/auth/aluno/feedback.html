@@ -19,12 +19,13 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-
-
-
 <script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
 
 <script th:src="@{bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
+
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrapless-star-rating/star-rating.css} "/>
 
 <title>Cardapio</title>
 
@@ -157,98 +158,70 @@
                 
 
                 <form th:action="@{/feedback/gravarFeedback}" th:object="${novoFeedback}" method="post">
-
-                
-
-                <div class="row mb-3">
-
-                
-
-                    <label>Nome do Aluno:</label>
-
-                    
-
-                    <div class="formulario">
-
-                        <input class="form-control" type="text" th:field="*{nomeAluno}">
-
-                    </div>
-
-                    
-
-                    <div class="input-group has-validation">
-
-                    
-
-                        <span class="mensagem"
-
-                        th:if="${#fields.hasErrors('nomeAluno')}" th:errors="*{nomeAluno}">
-
-                        </span>
-
-                        
-
-                    </div>
-                     
-
-                </div>
-
-                
-
-                <div class="row mb-3">
-
-                
-
-                    <label>Descrição:</label>
-
-                    
-
-                    <div class="formulario">
-
-                        <input class="form-control" type="text" th:field="*{descricaoFeedback}"> 
-
-                    </div> 
-
-                    <!--tipo & em c  -->
-
-                    
-
-                 <div class="col-sm-5">
-
-                    
-
-                        <span class="mensagem" 
-
-                        th:if="${#fields.hasErrors('descricaoFeedback')}" th:errors="*{descricaoFeedback}">
-
-                        </span>
-
-                        
-
-                    </div>
-
-                    
-
-                </div>
-
-
-				<div class="row mb-3">
-
-					<label for="customRange3" class="form-label">Avaliacao</label> <input
-						type="range" class="form-range" min="1" max="5" step="1"
-						id="customRange3">
-
-				</div>
-
-
-				<input class="btn btn-success btn-custom" type="submit" value="Enviar"/> 
-
-                    
+	
+	                <div class="row mb-3">
+	                
+	                    <label>Nome do Aluno:</label>
+	
+	                    <div class="formulario">
+	
+	                        <input class="form-control" type="text" th:field="*{nomeAluno}">
+	
+	                    </div>
+	
+	                    
+	
+	                    <div class="input-group has-validation">
+	                    
+	                        <span class="mensagem"
+	
+	                        th:if="${#fields.hasErrors('nomeAluno')}" th:errors="*{nomeAluno}">
+	
+	                        </span>
+	
+	                    </div>
+	                     
+	
+	                </div>
+	
+	                
+	
+	                <div class="row mb-3">
+	
+	                    <label>Descrição:</label>
+	
+	                    <div class="formulario">
+	
+	                        <input class="form-control" type="text" th:field="*{descricaoFeedback}"> 
+	
+	                    </div> 
+	
+	                    <!--tipo & em c  -->
+	                  
+	
+	                 <div class="col-sm-5">
+	                        <span class="mensagem" 
+	
+	                        th:if="${#fields.hasErrors('descricaoFeedback')}" th:errors="*{descricaoFeedback}">
+	
+	                        </span>
+	                    </div>
+	                </div>
+	
+	
+					<div class="row mb-3">
+	
+						<label>Avaliacao</label> 
+						
+						<input value="0" type="hidden" class="rating" data-glyphicon="0"
+	               		th:field="*{estrelas}">
+	
+					</div>
+					
+					<input class="btn btn-success btn-custom" type="submit" value="Enviar"/> 
 
                 </form>
-
                 
-
             </div>
 
         </div>

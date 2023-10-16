@@ -22,9 +22,7 @@ public class Feedback {
 	@Size(min = 3, message ="O nome do aluno deve conter pelo menos 3 caracteres")
 	private String nomeAluno;
 	
-	@NotBlank(message = "A quantidade de estrelas deve ser avaliada")
-	@Size(max = 5, message ="O nome do aluno deve conter pelo menos 3 caracteres")
-	private int estrelas;
+	private float estrelas;
 
 	public long getId() {
 		return id;
@@ -48,6 +46,14 @@ public class Feedback {
 
 	public void setNomeAluno(String nomeAluno) {
 		this.nomeAluno = nomeAluno;
+	}
+
+	public float getEstrelas() {
+		return estrelas;
+	}
+
+	public void setEstrelas(float estrelas) {
+		this.estrelas = estrelas;
 	}
 
 }
