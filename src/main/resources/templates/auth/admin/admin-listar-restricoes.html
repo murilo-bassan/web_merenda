@@ -5,12 +5,11 @@
 <style>
 
 .btn-custom{
-            background-color: #016A13; 
-            border-radius: 50px;
-            box-shadow: 2px  2px  #016A13;
+	background-color: #016A13; 
+	border-radius: 50px;
+	box-shadow: 2px  2px  #016A13;
 
         }
-
 
 </style>
 
@@ -43,18 +42,20 @@
         <table class="table table-striped">
             <thead>
             <tr>
+            	<th></th>
                 <th>Id</th>
                 <th>Descricao</th>
                 <th>Nome do Aluno</th>
                 <th>Comprovante</th>
-                <th><th>
             </tr>
             </thead>
             <tbody>
             <tr th:if="${listaRestricoes.empty}">
-                <td colspan="4">Não existem feedbacks.</td>
+            <td></td>
+                <td colspan="5">Não existem restrições.</td>
             </tr>
             <tr th:each="restricao : ${listaRestricoes}">
+            	<td></td>
                 <td><span th:text="${restricao.id}"></span></td>
                 <td><span th:text="${restricao.descricaoRestricao}"></span></td>
                 <td><span th:text="${restricao.nomeAluno}"></span></td>

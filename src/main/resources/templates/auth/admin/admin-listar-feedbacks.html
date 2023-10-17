@@ -3,6 +3,15 @@
 <link th:href="@{/assets/css.style.css}" rel="stylesheet" />
 <head th:replace="fragment/cssJs :: head"></head>
 
+<style>
+
+.estrela{
+	color: black;
+	font-size: 120% !important;
+}
+
+</style>
+
 <body>
 
 	<!-- ======= NavBar ======= -->
@@ -37,21 +46,24 @@
         <table class="table table-striped">
             <thead>
             <tr>
+            	<th></th>
                 <th>Id</th>
-                <th>Descricao</th>
+                <th>Comentário</th>
                 <th>Nome do Aluno</th>
-                <th><th>
+                <th>Avaliação</th>
             </tr>
             </thead>
             <tbody>
             <tr th:if="${listaFeedbacks.empty}">
-                <td colspan="4">Não existem feedbacks.</td>
+            	<td></td>
+                <td colspan="6">Não existem feedbacks.</td>
             </tr>
             <tr th:each="feedback : ${listaFeedbacks}">
+            	<td></td>
                 <td><span th:text="${feedback.id}"></span></td>
                 <td><span th:text="${feedback.descricaoFeedback}"></span></td>
                 <td><span th:text="${feedback.nomeAluno}"></span></td>
-                <td><span th:text="${feedback.estrelas}"></span></td>
+                <td class = "estrela"><span th:text="${feedback.estrelas}"></span> ★</td>
             </tr>
             </tbody>
         </table>
