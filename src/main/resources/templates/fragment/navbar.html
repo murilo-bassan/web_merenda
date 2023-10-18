@@ -20,12 +20,22 @@
         body{
             align-items: center;  
         }
+		nav{
+			padding: 0px 20px 0px 20px;
+		} 
+		#logo {
+			font-size: 20px;
+			font-weight: 600;
+		}
+
+
 </style>
 	<body>
 		<nav th:fragment="nav" style="background-color: #016A13;" class="navbar navbar-expand-lg navbar-dark ">
 		
-		<a class="navbar-brand" href="/"><i><img src="/imagens/Captura de Tela 2023-09-13 às 10.55.03.png"
-					alt="Captura de Tela 2023-09-13 às 10.44.48" width="20%"> Merenda IFMS</i></a>
+		<a class="navbar-brand" id ="logo" href="/"> 
+			<img src="/imagens/Captura de Tela 2023-09-13 às 10.55.03.png" 
+					alt="Captura de Tela 2023-09-13 às 10.44.48" width="20%"><span> Merenda IFMS</span></a>
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
 			<span class="navbar-toggler-icon"></span>
@@ -51,8 +61,10 @@
 				<a class="nav-link" href="#"></a>
 			</li>
 			</ul>
-		</div>
+				<div class="bi bi-person-fill"></div>
+	</div>
 	</nav>
+	
 	
 	</body>
 </html>
