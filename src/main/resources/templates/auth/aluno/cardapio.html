@@ -55,7 +55,7 @@
 
 
 
-        .container{
+        .container2{
 
             text-align: center;  
 
@@ -115,84 +115,87 @@
 
                 <div class="col-md-6">     <!-- verificar alinhamentos das colunas bootstrap -->
                 
-                    <table class="table">
+                    <!--<table class="table">
 
                         <thead>
-
                             <tr>
-
                                 <th colspan = "6" class="title"> Cardápio Semanal</th>
-
                             </tr>
 
                           <tr class="tableHead">
-
                             <th scope="col"></th>
-
                             <th scope="col" >Segunda</th>
-
                             <th scope="col">Terça</th>
-
                             <th scope="col">Quarta</th>
-
                             <th scope="col">Quinta</th>
-
                             <th scope="col">Sexta</th>
-
                           </tr>
-
                         </thead>
 
                         <tbody>
-
                           <tr>
-
                             <th scope="row" class="collumn">Carboidrato</th>
-
                             <td>Bolo</td>
-
                             <td>Chipa</td>
-
                             <td>Biscoito</td>
-
                             <td>Bolo</td>
-
                             <td>Chipa</td>
-
-
-
                           </tr>
 
                           <tr>
-
                             <th scope="row" class="collumn">Liquido</th>
-
                             <td>Suco</td>
-
                             <td>Letie</td>
-
                             <td>Suco</td>
-
                             <td>Chá</td>
-
                             <td>Suco</td>
-
                           </tr>
 
                           <tr>
-
                             <th scope="row" class="collumn">Fruta</th>
-
                             <td>Maça</td>
-
                             <td>Banana</td>
-
                             <td>Abacaxi</td>
-
                             <td>Laranja</td>
-
                             <td>Maça</td>
+                          </tr>
 
+                        </tbody>
+
+                      </table>-->
+                      
+                      <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th colspan = "6" class="title"> Cardápio Semanal</th>
+                            </tr>
+
+                          <tr class="tableHead">
+                            <th scope="col"></th>
+                            <th scope="col">Segunda</th>
+                            <th scope="col">Terça</th>
+                            <th scope="col">Quarta</th>
+                            <th scope="col">Quinta</th>
+                            <th scope="col">Sexta</th>
+                          </tr>
+                        </thead>
+
+                        <tbody th:each="item : ${listaItens}">
+                        
+                          <tr>
+                            <th scope="row" class="collumn">Carboidrato</th>
+                            <td><span th:text="${item.nome}"></span></td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="collumn">Liquido</th>
+                            <td><span th:text="${item.nome}"></span></td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="collumn">Fruta</th>
+                            <td><span th:text="${item.nome}"></span></td>
                           </tr>
 
                         </tbody>

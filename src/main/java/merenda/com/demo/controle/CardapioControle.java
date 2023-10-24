@@ -55,16 +55,24 @@ public class CardapioControle {
 		model.addAttribute("tipo_merenda", new Tipo_merenda());
 		return "/auth/admin/admin-criar-tipo";
 	}
+
 	
+
 	@GetMapping("/novaCategoria")
 	public String adicionarCategoria(Model model) {
 		model.addAttribute("categoria", new Categoria());
+		List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
+		model.addAttribute("tipo_merenda", tipo_merenda);
 		return "/auth/admin/admin-criar-categoria";
 	}
+
 	
+
 	@GetMapping("/novoItem")
 	public String adicionarNoticia(Model model) {
 		model.addAttribute("item", new Item());
+		List<Categoria> categoria = categoriaRepository.findAll();
+		model.addAttribute("categoria", categoria);
 		return "/auth/admin/admin-criar-item";
 	}
 	
