@@ -35,6 +35,20 @@
 	
 
 	<main id="main" class="main">
+	
+	<div class="row">
+			<div class="col-sm-5">
+				<form th:action="@{/feedback/buscar}" method="post">
+					<div class="input-group">
+						<input type="text" class="form-control" name="nome"/>
+						<input class="btn btn-primary" type="submit" value="Buscar"/> 
+						<a th:href="@{/feedback/listar}" class="btn btn-danger" type="submit">Cancelar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+	
 		<div class="container">
     <!-- <div class="row" style="padding-bottom: 30px;">
         <div class="col">

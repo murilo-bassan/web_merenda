@@ -100,6 +100,19 @@ public class RestricaoControle {
 		return "/auth/aluno/pdf";
 	}
 	
+	/*@PostMapping("/buscar")
+	public String buscarAlbuns(Model model, @Param("nome") String nome) {
+		if (nome == null) {
+			
+			return "redirect:/";
+		}
+		
+		List<Album> albuns = albumServico.buscarAlbumPorNome(nome);
+		model.addAttribute("listaAlbuns", albuns);
+		
+		return "/lista-albuns";
+	}*/
+	
 	/*@GetMapping("/listarFotos/{idNoticia}")
 	public String listarFotos(@PathVariable("idNoticia") long idNoticia, Model model) {
 		Noticia noticia = noticiaRepository.findById(idNoticia)
