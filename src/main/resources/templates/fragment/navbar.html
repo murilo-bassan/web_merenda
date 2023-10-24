@@ -20,11 +20,12 @@
         body{
             align-items: center;  
         }
-		nav{
-			padding: 0px 20px 0px 20px;
-		} 
-		#logo {
+		
+		#logo span {
 			font-size: 20px;
+			font-weight: 600;
+		}
+		#user span {
 			font-weight: 600;
 		}
 
@@ -32,8 +33,8 @@
 </style>
 	<body>
 		<nav th:fragment="nav" style="background-color: #016A13;" class="navbar navbar-expand-lg navbar-dark ">
-		
-		<a class="navbar-brand" id ="logo" href="/"> 
+		<div class="container">
+		<a class="navbar-brand fs-4" id ="logo" href="/"> 
 			<img src="/imagens/Captura de Tela 2023-09-13 às 10.55.03.png" 
 					alt="Captura de Tela 2023-09-13 às 10.44.48" width="20%"><span> Merenda IFMS</span></a>
 		
@@ -42,29 +43,45 @@
 		</button>
 		
 		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-			<li class="nav-item">
+			<ul class="navbar-nav justify-content-center align-items-center flex-grow-1 pe-3">
+			<li class="nav-item mx-2">
 				<a class="nav-link" href="/cardapio/redirectCardapio">Cardápio</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item mx-2">
 				<a class="nav-link" href="/restricao/redirectRestricoes">Restrições</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item mx-2">
 				<a class="nav-link" href="/feedback/redirectFeedback">Mande um Feedback</a>
 			</li>
 			
-			<li class="nav-item">
+			<li class="nav-item mx-2">
 				<a class="nav-link" href="/admin/index2">Admin</a>
 			</li>
 			
-			<li class="nav-item">
+			<li class="nav-item mx-2">
 				<a class="nav-link" href="#"></a>
 			</li>
 			</ul>
-				<div class="bi bi-person-fill"></div>
+			
+			<div>
+				<a class="navbar-brand" id ="user" href="#"> 
+					<i class="fa-solid fa-user" style="color: white;"></i> <span>fazer login </span></a>
+			</div> 
+			<!--Login   / Sing up -->
+<!--
+			<div class ="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+				<a href="#login" class="text-white">Entre</a>
+				<a href="#singup" class="text-white text-decoration-none px-3 py-1 rounded-pill"
+				style="background-color: red;">Cadastre-se</a>
+
+			</div>-->
+
+
+	</div>
+	
 	</div>
 	</nav>
-	
-	
+
+
 	</body>
 </html>
