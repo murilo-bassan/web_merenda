@@ -35,87 +35,106 @@
 <style>
 
 #container{
-			margin-top: 20px;
-		
+			margin-top: 20px;		
 		}
-
-		
 
         .btn-custom{
-
             background-color: #016A13; 
-
             border-radius: 50px;
-
             box-shadow: 2px  2px  #016A13;
-
-
-
         }
-
-
 
         .container2{
-
             text-align: center;  
-
         }
-
         
-
         .tableHead{
-
 			background-color: #016A13;
-
 			color:white;
-
 		}
-
 		
-
 		.title{
-
 			font-size: 300%;
-
 			color:  #016A13;
-
 		}
-
-		
 
 		.collumn{
-
 			color:  #016A13;
-
 		}
-
-		
-
-
-
-		
-
-        
-
 </style>
-
 
 
   <body>
 
-  
-
   <div th:insert="fragment/navbar"></div>
-
   
+  <div class = "container" id="container">
 
-    <div class = "container" id="container">
+		<div class="col-sm-2">
+			<select class="form-select">
+				<th:block>
+					<option>tipo</option>
+				</th:block>
+			</select>
+		</div>
+		
+		
 
-            <div class="row">
+		<div class="row">
 
                 <div class="col-md-6">     <!-- verificar alinhamentos das colunas bootstrap -->
                 
-                    <!--<table class="table">
+                <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th colspan = "6" class="title"> Cardápio Semanal</th>
+                            </tr>
+
+                          <tr class="tableHead">
+                            <th scope="col"></th>
+                            <th scope="col" >Liquido</th>
+                            <th scope="col">Carboidrato</th>
+                            <th scope="col">Fruta</th>
+                          </tr>
+                        </thead>
+                        
+                        <tbody>
+                          <tr>
+                            <th scope="row" class="collumn">01/10</th>
+                            <td>Suco</td>
+                            <td>Chipa</td>
+                            <td>Laranja</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="collumn">02/10</th>
+                            <td>Suco</td>
+                            <td>Chipa</td>
+                            <td>Laranja</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="collumn">03/10</th>
+                            <td>Suco</td>
+                            <td>Chipa</td>
+                            <td>Laranja</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="collumn">04/10</th>
+                            <td>Suco</td>
+                            <td>Chipa</td>
+                            <td>Laranja</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="collumn">05/10</th>
+                            <td>Suco</td>
+                            <td>Chipa</td>
+                            <td>Laranja</td>
+                          </tr>
+                       </tbody>
+                        
+                </table>
+                
+                   <!--<table class="table">
 
                         <thead>
                             <tr>
@@ -162,9 +181,9 @@
 
                         </tbody>
 
-                      </table>-->
+                      </table> --> 
                       
-                      <table class="table">
+                     <!-- <table class="table">
 
                         <thead>
                             <tr>
@@ -183,24 +202,14 @@
 
                         <tbody th:each="item : ${listaItens}">
                         
-                          <tr>
-                            <th scope="row" class="collumn">Carboidrato</th>
-                            <td><span th:text="${item.nome}"></span></td>
-                          </tr>
-
-                          <tr>
-                            <th scope="row" class="collumn">Liquido</th>
-                            <td><span th:text="${item.nome}"></span></td>
-                          </tr>
-
-                          <tr>
-                            <th scope="row" class="collumn">Fruta</th>
+                          <tr th:each="item : ${listaItens}">
+                            <th scope="row" class="collumn"><span th:text="${item.categoria.nome}"></span></th>
                             <td><span th:text="${item.nome}"></span></td>
                           </tr>
 
                         </tbody>
 
-                      </table>
+                      </table>-->
 
                 </div>
 
