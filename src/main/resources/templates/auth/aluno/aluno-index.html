@@ -84,10 +84,17 @@
 						<div class="card-body">
 							<h5 class="card-title" th:text="${noticia.titulo}">Título da
 								Notícia 1</h5>
-							<p clasus="card-text"
+								<h6 class="card-title" th:text="${noticia.subtitulo}">Subtítulo da
+								Notícia 1</h6>
+							<p class="card-text"
 								th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Descrição
 								da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing
 								elit.</p>
+								
+								<p
+								th:text="${noticia.autor}">Autor da noticia</p>
+								
+								<p class="card-title" th:text="${noticia.autor}">Autor da Noticia</p>
 						</div>
 					</div>
 				</div>

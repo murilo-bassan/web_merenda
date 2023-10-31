@@ -22,7 +22,11 @@ public class Feedback {
 	@Size(min = 3, message ="O nome do aluno deve conter pelo menos 3 caracteres")
 	private String nomeAluno;
 	
-	private float estrelas;
+	private float estrelasBebida;
+	
+	private float estrelasCarboidrato;
+	
+	private float estrelasFruta;
 
 	public long getId() {
 		return id;
@@ -48,12 +52,28 @@ public class Feedback {
 		this.nomeAluno = nomeAluno;
 	}
 
-	public float getEstrelas() {
-		return estrelas;
+	public float getEstrelasBebida() {
+		return estrelasBebida;
 	}
 
-	public void setEstrelas(float estrelas) {
-		this.estrelas = estrelas;
+	public void setEstrelasBebida(float estrelasBebida) {
+		this.estrelasBebida = estrelasBebida;
+	}
+
+	public float getEstrelasCarboidrato() {
+		return estrelasCarboidrato;
+	}
+
+	public void setEstrelasCarboidrato(float estrelasCarboidrato) {
+		this.estrelasCarboidrato = estrelasCarboidrato;
+	}
+
+	public float getEstrelasFruta() {
+		return estrelasFruta;
+	}
+
+	public void setEstrelasFruta(float estrelaFruta) {
+		this.estrelasFruta = estrelaFruta;
 	}
 
 }
