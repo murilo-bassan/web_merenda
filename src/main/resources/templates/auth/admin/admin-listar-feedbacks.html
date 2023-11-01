@@ -61,11 +61,12 @@
             <thead>
             <tr>
             	<th></th>
+            	<!--<th>Nome do Aluno</th>-->
                 <th>Comentário</th>
-                <th>Nome do Aluno</th>
                 <th>Avaliação Bebida</th>
                 <th>Avaliação Carboidrato</th>
                 <th>Avaliação Fruta</th>
+                <th>Media de Avaliação</th>
             </tr>
             </thead>
             <tbody>
@@ -75,11 +76,12 @@
             </tr>
             <tr th:each="feedback : ${listaFeedbacks}">
             	<td></td>
+            	<!--<td><span th:text="${feedback.nomeAluno}"></span></td>-->
                 <td><span th:text="${feedback.descricaoFeedback}"></span></td>
-                <td><span th:text="${feedback.nomeAluno}"></span></td>
                 <td class = "estrela"><span th:text="${feedback.estrelasBebida}"></span> ★</td>
                 <td class = "estrela"><span th:text="${feedback.estrelasCarboidrato}"></span> ★</td>
                 <td class = "estrela"><span th:text="${feedback.estrelasFruta}"></span> ★</td>
+                <td class = "estrela"><span th:text="${(feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3}"></span> ★</td>
             </tr>
             </tbody>
         </table>
