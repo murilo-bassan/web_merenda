@@ -31,6 +31,56 @@
 body {
 	align-items: center;
 }
+
+
+.rate-area {
+	float: left;
+	border-style: none;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.rate-area:not(:checked)>input {
+	position: absolute;
+	top: -9999px;
+	clip: rect(0, 0, 0, 0);
+}
+
+.rate-area:not(:checked)>label {
+	float: right;
+	width: 1em;
+	padding: 0em;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 200%;
+	line-height: 1.2;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+
+.rate-area:not(:checked)>label:before {
+	content: '★ ';
+}
+
+.s{
+	color: gold;
+	text-shadow: 1px 1px #c60;
+	font-size: 200% !important;
+}
+
+
+.s2 {
+	white-space: nowrap;
+	font-size: 200%;
+	line-height: 1.2;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+
 </style>
 
 <body>
@@ -47,6 +97,70 @@ body {
 				</div>
 				<h1>Feedback</h1>
 				<p>Clique no botão para enviar um feedback sobre a merenda do IF!</p>
+				<table>
+					<tr>
+						<td>
+							<p class = "s">★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th> Pessimo</th>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class = "s">★ ★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th> Ruim</th>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class = "s">★ ★ ★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th> Regular</th>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class = "s">★ ★ ★ ★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th> Bom</th>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class = "s">★ ★ ★ ★ ★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th> Perfeito</th>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class = "s2">★ ★ ★ ★ ★</p>
+						</td>
+						<td>
+						</td>
+						<td>
+							<th>Nao comi</th>
+						</td>
+						
+					</tr>
+				</table>
+				
 				<a th:href="@{/feedback/pagFeedback}">
 					<button type="button" class="btn btn-success btn-custom">
 						Clique aqui</button>

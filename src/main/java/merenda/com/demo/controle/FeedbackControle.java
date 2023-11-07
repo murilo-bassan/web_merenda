@@ -1,5 +1,7 @@
 package merenda.com.demo.controle;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,26 @@ public class FeedbackControle {
 	@GetMapping("/listar")
 	public String listarFeedback(Model model) {
 		
-		model.addAttribute("listaFeedbacks", feedbackRepositorio.findAll());		
+		model.addAttribute("listaFeedbacks", feedbackRepositorio.findAll());
+		
+		List<Feedback> lista = feedbackRepositorio.findAll();
+		
+		int divisor = 0;
+		float dividendo = 0;
+		float media = 0.2f;
+		for(Feedback feedback : lista) {
+			media = (feedback.getEstrelasBebida() + feedback.getEstrelasFruta() + feedback.getEstrelasCarboidrato())/3;
+			model.addAttribute("media", media);
+			
+			dividendo = dividendo + (feedback.getEstrelasBebida() + feedback.getEstrelasFruta() + feedback.getEstrelasCarboidrato())/3;
+			divisor++;
+		}
+		
+		float mediaGeral = 0.1f;
+		mediaGeral = dividendo/divisor;
+		
+		model.addAttribute("mediaGeral", mediaGeral);
+		
 		return "/auth/admin/admin-listar-feedbacks";	
 	}
 	

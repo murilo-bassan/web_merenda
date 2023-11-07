@@ -81,7 +81,27 @@
                 <td class = "estrela"><span th:text="${feedback.estrelasBebida}"></span> ★</td>
                 <td class = "estrela"><span th:text="${feedback.estrelasCarboidrato}"></span> ★</td>
                 <td class = "estrela"><span th:text="${feedback.estrelasFruta}"></span> ★</td>
-                <td class = "estrela"><span th:text="${(feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3}"></span> ★</td>
+                <td class = "estrela"><span th:text="${(feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3}"></span> ★</td></span>
+                
+                <!--
+                <script>
+                const value = (feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3;
+                const formatedValue = value.toFixed(1);
+                document.getElementById('decimalValue').textContent = formatedValue;
+                
+                </script>
+                -->
+                
+     
+            	
+            </tr>
+            
+            <tr>
+            
+            	<td></td>
+            	<th></th>
+            	<th></th>
+            	<th colspan = 4 class = "estrela">Media Geral: <span th:text="${mediaGeral}"></span> ★</th>
             	
             </tr>
             </tbody>

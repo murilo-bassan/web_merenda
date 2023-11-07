@@ -18,10 +18,6 @@ public class Feedback {
 	@Size(min = 3, message ="O feedback deve conter pelo menos 3 caracteres")
 	private String descricaoFeedback;
 	
-	@NotBlank(message = "O nome do aluno deve ser informado")
-	@Size(min = 3, message ="O nome do aluno deve conter pelo menos 3 caracteres")
-	private String nomeAluno;
-	
 	private float estrelasBebida;
 	
 	private float estrelasCarboidrato;
@@ -42,14 +38,6 @@ public class Feedback {
 
 	public void setDescricaoFeedback(String descricaoFeedback) {
 		this.descricaoFeedback = descricaoFeedback;
-	}
-
-	public String getNomeAluno() {
-		return nomeAluno;
-	}
-
-	public void setNomeAluno(String nomeAluno) {
-		this.nomeAluno = nomeAluno;
 	}
 
 	public float getEstrelasBebida() {
