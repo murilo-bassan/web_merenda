@@ -79,9 +79,17 @@
             	<!--<td><span th:text="${feedback.nomeAluno}"></span></td>-->
                 <td><span th:text="${feedback.descricaoFeedback}"></span></td>
                 <td class = "estrela"><span th:text="${feedback.estrelasBebida}"></span> ★</td>
+                <!--<td th:if = "${feedback.estrelasBebida == 0}" class = "estrela"><span th:text=""></span>-</td>-->
+                
                 <td class = "estrela"><span th:text="${feedback.estrelasCarboidrato}"></span> ★</td>
+                <!--<td th:if = "${feedback.estrelasCarboidrato == 0}" class = "estrela"><span th:text=""></span>-</td>-->
+                
                 <td class = "estrela"><span th:text="${feedback.estrelasFruta}"></span> ★</td>
-                <td class = "estrela"><span th:text="${(feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3}"></span> ★</td></span>
+                <!--<td th:if = "${feedback.estrelasFruta == 0}" class = "estrela"><span th:text=""></span>-</td>-->
+                
+                <td class = "estrela"><span th:text="${feedback.mediaEstrelas}"></span> ★</td>
+                
+                <!--"${(feedback.estrelasBebida + feedback.estrelasCarboidrato + feedback.estrelasFruta)/3}">-->
                 
                 <!--
                 <script>
@@ -97,13 +105,22 @@
             </tr>
             
             <tr>
-            
-            	<td></td>
             	<th></th>
             	<th></th>
-            	<th colspan = 4 class = "estrela">Media Geral: <span th:text="${mediaGeral}"></span> ★</th>
-            	
+            	<th class = "estrela">Media Bebida: <span th:text="${mediaBebida}"></span> ★</th>
+            	<th class = "estrela">Media Carboidrato: <span th:text="${mediaCarboidrato}"></span> ★</th>
+            	<th class = "estrela">Media Fruta: <span th:text="${mediaFruta}"></span> ★</th>
+            	<th></th>
             </tr>
+            
+            <tr>
+           		<th></th>
+           		<th></th>
+           		<th></th>
+            	<th colspan = 4 class = "estrela">Media Geral: <span th:text="${mediaGeral}"></span> ★</th>
+            	<th></th>
+            </tr>
+            
             </tbody>
         </table>
     </div>

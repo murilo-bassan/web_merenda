@@ -1,5 +1,6 @@
 package merenda.com.demo.modelo;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Feedback {
 	private float estrelasCarboidrato;
 	
 	private float estrelasFruta;
+	
+	private float mediaEstrelas;
 
 	public long getId() {
 		return id;
@@ -62,6 +65,41 @@ public class Feedback {
 
 	public void setEstrelasFruta(float estrelaFruta) {
 		this.estrelasFruta = estrelaFruta;
+	}
+
+	public float getMediaEstrelas() {
+		int divisor = 0;
+		float dividendo = 0;
+		
+		
+		if(this.getEstrelasBebida() > 0) {
+			divisor++;
+		}
+		
+		if(this.getEstrelasCarboidrato() > 0) {
+			divisor++;		
+		}
+		
+		if(this.getEstrelasFruta() > 0) {
+			divisor++;
+		}
+		
+		
+		dividendo = dividendo + (this.getEstrelasBebida() + this.getEstrelasCarboidrato() + this.getEstrelasFruta());
+		
+		if(divisor > 0) {
+			mediaEstrelas = dividendo/divisor;
+		}
+		
+		else {
+			mediaEstrelas = 0;
+		}
+		
+		return mediaEstrelas;
+	}
+
+	public void setMediaEstrelas(float mediaEstrelas) {
+		this.mediaEstrelas = mediaEstrelas;
 	}
 
 }

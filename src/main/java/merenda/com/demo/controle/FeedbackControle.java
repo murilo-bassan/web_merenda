@@ -37,17 +37,50 @@ public class FeedbackControle {
 		
 		int divisor = 0;
 		float dividendo = 0;
-		float media = 0.2f;
+		
+		float mediaB = 0;
+		float somaB = 0;
+		int divisorB = 0;
+		
+		float mediaC = 0;
+		float somaC = 0;
+		int divisorC = 0;
+		
+		float mediaF = 0;
+		float somaF = 0;
+		int divisorF = 0;
+		
 		for(Feedback feedback : lista) {
-			media = (feedback.getEstrelasBebida() + feedback.getEstrelasFruta() + feedback.getEstrelasCarboidrato())/3;
-			model.addAttribute("media", media);
 			
-			dividendo = dividendo + (feedback.getEstrelasBebida() + feedback.getEstrelasFruta() + feedback.getEstrelasCarboidrato())/3;
+			if(feedback.getEstrelasBebida() > 0) {
+				somaB = somaB + feedback.getEstrelasBebida();
+				divisorB++;
+			}
+			
+			if(feedback.getEstrelasCarboidrato() > 0) {
+				somaC = somaC + feedback.getEstrelasCarboidrato();
+				divisorC++;
+			}
+			
+			if(feedback.getEstrelasFruta() > 0) {
+				somaF = somaF + feedback.getEstrelasFruta();
+				divisorF++;
+			}
+			
+			dividendo = dividendo + feedback.getMediaEstrelas();
 			divisor++;
 		}
 		
-		float mediaGeral = 0.1f;
-		mediaGeral = dividendo/divisor;
+		mediaB = somaB/divisorB;
+		model.addAttribute("mediaBebida", mediaB);
+		
+		mediaC = somaC/divisorC;
+		model.addAttribute("mediaCarboidrato", mediaC);
+		
+		mediaF = somaF/divisorF;
+		model.addAttribute("mediaFruta", mediaF);
+		
+		float mediaGeral = dividendo/divisor;
 		
 		model.addAttribute("mediaGeral", mediaGeral);
 		
