@@ -69,21 +69,22 @@ public class AlunoControle {
 	
 
 	@GetMapping("/")
-    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {	
+    public String noticias(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "2") int size) {	
 		
-		Order order = new Order(Sort.Direction.ASC, "nome");
+			Order order = new Order(Sort.Direction.DESC, "id");
+ 
+			Pageable pageable = PageRequest.of(page - 1, size) ;
 
-		Pageable pageable = PageRequest.of(page, size);
+			List<Noticia> noticias = noticiaRepository.findAll();
 
-		List<Noticia> noticias = noticiaRepository.findAll();
-		model.addAttribute("noticias", noticias); 
+		model.addAttribute("noticias", noticiaRepository.findAll(pageable)); 
 	
 		return "/auth/aluno/aluno-index";
     }
 	
 	
 	
-	
+	/*
 	//@PostMapping("/gravar")
 	//public String gravarEstudante(@ModelAttribute("novoEstudante") @Valid Estudante estudante,
 	//		BindingResult erros, Model model, 
@@ -102,5 +103,5 @@ public class AlunoControle {
 	//	estudanteServico.criarEstudante(estudante);
 	//	attributes.addFlashAttribute("mensagem", "Estudante salvo com sucesso!");
 	//	return "redirect:/novo";
-	//}
+	//} */
 }

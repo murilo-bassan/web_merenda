@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -30,6 +31,8 @@ import merenda.com.demo.repositorio.FotoRepositorio;
 
 @Service
 public class FotoService {
+
+	private static final Logger logger = Logger.getLogger(FotoService.class.getName());
 
 	@Autowired
 	private FotoRepositorio fotoRepositorio;
@@ -77,6 +80,9 @@ public class FotoService {
 			try (OutputStream outputStream = Channels.newOutputStream(pipe.sink())) {
 				// Write the encoded data to the pipeline.
 				httpEntity.writeTo(outputStream);
+
+				logger.info("Bytes do arquivo obtidos com sucesso.");
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
