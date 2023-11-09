@@ -1,5 +1,6 @@
 package merenda.com.demo.controle;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,22 +68,27 @@ public class FeedbackControle {
 				divisorF++;
 			}
 			
+			
 			dividendo = dividendo + feedback.getMediaEstrelas();
 			divisor++;
 		}
 		
+		DecimalFormat df =  new DecimalFormat("0.00");
+		
 		mediaB = somaB/divisorB;
-		model.addAttribute("mediaBebida", mediaB);
+		model.addAttribute("mediaBebida", df.format(mediaB));
 		
 		mediaC = somaC/divisorC;
-		model.addAttribute("mediaCarboidrato", mediaC);
+		df.format(mediaC);
+		model.addAttribute("mediaCarboidrato", df.format(mediaC));
 		
 		mediaF = somaF/divisorF;
-		model.addAttribute("mediaFruta", mediaF);
+		df.format(mediaF);
+		model.addAttribute("mediaFruta", df.format(mediaF));
 		
 		float mediaGeral = dividendo/divisor;
 		
-		model.addAttribute("mediaGeral", mediaGeral);
+		model.addAttribute("mediaGeral", df.format(mediaGeral));
 		
 		return "/auth/admin/admin-listar-feedbacks";	
 	}

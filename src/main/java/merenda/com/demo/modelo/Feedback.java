@@ -1,6 +1,8 @@
 package merenda.com.demo.modelo;
 
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -70,7 +72,7 @@ public class Feedback {
 	public float getMediaEstrelas() {
 		int divisor = 0;
 		float dividendo = 0;
-		
+		int formatDecimal = 1;
 		
 		if(this.getEstrelasBebida() > 0) {
 			divisor++;
@@ -94,8 +96,12 @@ public class Feedback {
 		else {
 			mediaEstrelas = 0;
 		}
+		BigDecimal bd = new BigDecimal(mediaEstrelas);
+		bd = bd.setScale(formatDecimal, BigDecimal.ROUND_HALF_UP);
 		
-		return mediaEstrelas;
+		float numeroFormatado = bd.floatValue();
+		
+		return numeroFormatado;
 	}
 
 	public void setMediaEstrelas(float mediaEstrelas) {
