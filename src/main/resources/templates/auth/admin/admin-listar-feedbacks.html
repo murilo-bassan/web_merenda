@@ -10,6 +10,12 @@
 	font-size: 120% !important;
 }
 
+.estrelaN {
+	font-size: 120%;
+	color: lightgrey;
+	text-shadow: 1px 1px black;
+}
+
 </style>
 
 <body>
@@ -78,14 +84,15 @@
             	<td></td>
             	<!--<td><span th:text="${feedback.nomeAluno}"></span></td>-->
                 <td><span th:text="${feedback.descricaoFeedback}"></span></td>
-                <td class = "estrela"><span th:text="${feedback.estrelasBebida}"></span> ★</td>
-                <!--<td th:if = "${feedback.estrelasBebida == 0}" class = "estrela"><span th:text=""></span>-</td>-->
                 
-                <td class = "estrela"><span th:text="${feedback.estrelasCarboidrato}"></span> ★</td>
-                <!--<td th:if = "${feedback.estrelasCarboidrato == 0}" class = "estrela"><span th:text=""></span>-</td>-->
+                <td th:if = "${feedback.estrelasBebida > 0}" class = "estrela"><span th:text="${feedback.estrelasBebida}"></span> ★</td>
+                <td th:if = "${feedback.estrelasBebida == 0}" class = "estrela"><span> </span>--</td>
                 
-                <td class = "estrela"><span th:text="${feedback.estrelasFruta}"></span> ★</td>
-                <!--<td th:if = "${feedback.estrelasFruta == 0}" class = "estrela"><span th:text=""></span>-</td>-->
+                <td th:if = "${feedback.estrelasCarboidrato > 0}" class = "estrela"><span th:text="${feedback.estrelasCarboidrato}"></span> ★</td>
+                <td th:if = "${feedback.estrelasCarboidrato == 0}" class = "estrela"><span> </span>--</td>
+                
+                <td th:if = "${feedback.estrelasFruta > 0}" class = "estrela"><span th:text="${feedback.estrelasFruta}"></span> ★</td>
+                <td th:if = "${feedback.estrelasFruta == 0}" class = "estrela"><span> </span>--</td>
                 
                 <td class = "estrela"><span th:text="${feedback.mediaEstrelas}"></span> ★</td>
                 
