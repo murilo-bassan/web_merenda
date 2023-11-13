@@ -108,7 +108,12 @@
 								Notícia 1</h6>
 								
 							<p class="card-text" id ="card-text"
-								th:text="${#strings.concat(#strings.substring(noticia.corpo,0,100), '...')}">Descrição
+								th:if = "${#strings.length(noticia.corpo)} < 100"  th:text="${#strings.concat(#strings.substring(noticia.corpo, 0, #strings.length(noticia.corpo)))}">Descrição
+								da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing
+								elit.</p>
+								
+							<p class="card-text" id ="card-text"
+								th:if = "${#strings.length(noticia.corpo)} >= 100"  th:text="${#strings.concat(#strings.substring(noticia.corpo, 0, #strings.length(noticia.corpo)), '...')}">Descrição
 								da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing
 								elit.</p>
 								

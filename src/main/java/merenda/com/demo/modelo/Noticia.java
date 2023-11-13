@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.URL;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Noticia {
 	private String corpo;
 	@Size(min = 3, message = "O nome do autor deve ter no mínimo 3 caracteres")
 	private String autor;
-	@OneToMany (mappedBy = "noticia")
+	@OneToMany (mappedBy = "noticia", cascade = CascadeType.ALL)
 	private List<Foto> fotos;
 	
 	public String getTitulo() {
