@@ -76,6 +76,10 @@ public class AlunoControle {
 			Pageable pageable = PageRequest.of(page - 1, size) ;
 
 			List<Noticia> noticias = noticiaRepository.findAll();
+			
+			int currentPage = page;
+
+	        model.addAttribute("currentPage", currentPage);	
 
 		model.addAttribute("noticias", noticiaRepository.findAll(pageable)); 
 	
