@@ -20,9 +20,14 @@ public class Tipo_merenda {
 	@NotNull
 	@Size(min = 3, message = "O nome do tipo de merenda deve ter no mínimo 3 caracteres")
 	private String nome;
-	
+	/*
 	@OneToMany (mappedBy = "tipo_merenda")
 	private List<Categoria> categorias;
+	*/
+
+
+	@OneToMany(mappedBy = "tipo_merenda")
+	private List<Agenda> agenda;
 
 	public Long getId() {
 		return id;
@@ -40,6 +45,18 @@ public class Tipo_merenda {
 		this.nome = nome;
 	}
 
+	public List<Agenda> getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(List<Agenda> agenda) {
+		this.agenda = agenda;
+	}
+
+
+
+/*
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -47,6 +64,7 @@ public class Tipo_merenda {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
-	
-	
+ */
+
+
 }

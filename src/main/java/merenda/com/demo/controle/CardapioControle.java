@@ -62,7 +62,7 @@ public class CardapioControle {
 	public String adicionarCategoria(Model model) {
 		model.addAttribute("categoria", new Categoria());
 		List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
-		model.addAttribute("tipo_merenda", tipo_merenda);
+		model.addAttribute("tipo", tipo_merenda);
 		return "/auth/admin/admin-criar-categoria";
 	}
 
@@ -92,7 +92,7 @@ public class CardapioControle {
 				RedirectAttributes attributes, Model model) {
 		if (result.hasErrors()) {
 			List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
-			model.addAttribute("tipo_merenda", tipo_merenda);
+			model.addAttribute("tipo", tipo_merenda);
 			return "/auth/admin/admin-criar-categoria";
 		}	
 		categoriaRepository.save(categoria);

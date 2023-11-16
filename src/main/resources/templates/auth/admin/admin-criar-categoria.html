@@ -47,8 +47,8 @@
 					<div class="row mb-3">
 						<label class="col-sm-1 col-form-label">Tipo da Merenda:</label>
 						<div class="col-sm-2">
-							<select class="form-select" th:field="*{tipo_merenda}">
-								<th:block th:each="tipo : ${tipo_merenda}">
+							<select class="form-select"  th:object="${tipo_merenda}">
+								<th:block th:each="tipo : ${tipo}">
 									<option th:value="${tipo.id}"
 										th:text="${tipo.nome}"></option>
 								</th:block>
