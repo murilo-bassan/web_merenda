@@ -40,8 +40,10 @@ public class CardapioControle {
 	}
 
 	@GetMapping("/pagCardapio")
-	public String cardapio() {
-
+	public String cardapio(Model model) {
+		Tipo_merenda tipo_merenda = new Tipo_merenda();
+		model.addAttribute("tipo_merenda", tipo_merenda);
+		
 	return "/auth/aluno/cardapio";
 	}
 
