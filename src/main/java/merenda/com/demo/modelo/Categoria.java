@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -24,6 +25,9 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria")
 	private List<Item> Item;
+	
+	@ManyToOne
+	private Cardapio cardapio;
 	
 	public Long getId() {
 		return id;

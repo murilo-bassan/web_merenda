@@ -17,7 +17,9 @@ public class Agenda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Date data;
+	private Date dataInicio;
+	
+	private Date dataFim;
 	
 	@OneToMany(mappedBy = "agenda")
 	private List<Cardapio> cardapios;
@@ -27,10 +29,10 @@ public class Agenda {
 	
 	
 	public Date getData() {
-		return data;
+		return dataInicio;
 	}
 	public void setData(Date data) {
-		this.data = data;
+		this.dataInicio = data;
 	}
 	public List<Cardapio> getCardapios() {
 		return cardapios;
@@ -50,6 +52,19 @@ public class Agenda {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+	public Date getDataFim() {
+		return dataFim;
+	}
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
 	 
+	
 	
 }

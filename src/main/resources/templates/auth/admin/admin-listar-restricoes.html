@@ -62,34 +62,20 @@
                 <th>Comprovante</th>
             </tr>
             </thead>
+            
             <tbody>
             <tr th:if="${listaRestricoes.empty}">
             <td></td>
                 <td colspan="5">Não existem restrições.</td>
             </tr>
+            
             <tr th:each="restricao : ${listaRestricoes}">
             	<td></td>
                 <td><span th:text="${restricao.id}"></span></td>
                 <td><span th:text="${restricao.descricaoRestricao}"></span></td>
                 <td><span th:text="${restricao.nomeAluno}"></span></td>
-                <!--<td><span th:text="${restricao}"></span></td>-->
                 
-                <!--<td><a th:href = "@{restricao.pdf.get(0).url}"<button>
-                	<img th:src="@{/imagens/Captura de Tela 2023-09-15 às 10.04.10.png}" width="20%">
-                </button>
-                </a>
-                </td>
-                -->
-                <!--<td><span th:text="${restricao.pdf.get(0).url}"></span></td>-->
-                <!--<td><img th:src="${noticia.fotos.get(0).url}" class="imagem"></td>
-                -->  
                 <td>
-	               <!-- <a th:href="@{/restricao/url/{id}(id=${restricao.id})}" target = "_blank">
-		            	<button type="button" class="btn btn-success btn-custom">
-		                	Ver mais
-		                </button>
-	                </a> -->
-	                
 	                <a th:href="@{/restricao/url/{id}(id=${restricao.id})}" target = "_blank">
 		            	<button type="button" class="btn btn-success btn-custom">
 		                	Ver mais

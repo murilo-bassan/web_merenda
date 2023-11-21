@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import merenda.com.demo.modelo.Categoria;
 import merenda.com.demo.modelo.Item;
 import merenda.com.demo.modelo.Tipo_merenda;
+import merenda.com.demo.repositorio.CardapioRepositorio;
 import merenda.com.demo.repositorio.CategoriaRepositorio;
 import merenda.com.demo.repositorio.ItemRepositorio;
 import merenda.com.demo.repositorio.Tipo_merendaRepositorio;
@@ -33,6 +34,9 @@ public class CardapioControle {
 	@Autowired
 	private ItemRepositorio itemRepository;
 	
+	@Autowired
+	private CardapioRepositorio cardapioRepositorio;
+	
 	@GetMapping("/redirectCardapio")
 	public String redirecionarCardapio() {
 
@@ -43,6 +47,8 @@ public class CardapioControle {
 	public String cardapio(Model model) {
 		Tipo_merenda tipo_merenda = new Tipo_merenda();
 		model.addAttribute("tipo_merenda", tipo_merenda);
+		
+		model.addAttribute("listaCardapios", cardapioRepositorio.findAll());	
 		
 	return "/auth/aluno/cardapio";
 	}
