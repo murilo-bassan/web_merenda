@@ -8,15 +8,178 @@
 	<thead>
 	<tr> 
 		<td>
+		<a class="btn btn-primary" href="/cardapio/novaAgenda">Agenda<i class="bi bi-plus"></i></a>
 		<a class="btn btn-primary" href="/cardapio/novoTipo">Tipo<i class="bi bi-plus"></i></a>
 		<a class="btn btn-primary" href="/cardapio/novaCategoria">Categoria<i class="bi bi-plus"></i></a>
 		<a class="btn btn-primary" href="/cardapio/novoItem">Item<i class="bi bi-plus"></i></a>
+		
 		</td>
 	</tr>
 	</thead>
-	<tbody>
-	
-	</tbody>
-</table>    
+	<div class="container" id="container">
+
+		<div class="row">
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th colspan="6" class="title">Cardápio Semanal</th>
+						</tr>
+
+						<tr class="tableHead">
+							<th scope="col"></th>
+							<th scope="col">Liquido</th>
+							<th scope="col">Carboidrato</th>
+							<th scope="col">Fruta</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<th scope="row" class="collumn">06/11</th>
+							<td>Suco de Limão</td>
+							<td>Salgado de Carne</td>
+							<td>Abacaxi</td>
+						</tr>
+						<tr>
+							<th scope="row" class="collumn">07/11</th>
+							<td>Suco de Laranja</td>
+							<td>Pão de Batata</td>
+							<td>Tangerina</td>
+						</tr>
+						
+						<tr>
+							<th scope="row" class="collumn">08/11</th>
+							<td>Leite com Maracujá</td>
+							<td>Salgado de Frango</td>
+							<td>Banana</td>
+						</tr>
+
+						<tr>
+							<th scope="row" class="collumn">09/11</th>
+							<td>Suco de Laranja com Acerola</td>
+							<td>Pão de Queijo</td>
+							<td>Melancia</td>
+						</tr>
+						<tr>
+							<th scope="row" class="collumn">10/11</th>
+							<td>Suco de Caju</td>
+							<td>Salgado de Carne</td>
+							<td>Melão</td>
+						</tr>
+					</tbody>
+
+				</table>
+
+				<!--<table class="table">
+
+                        <thead>
+                            <tr>
+                                <th colspan = "6" class="title"> Cardápio Semanal</th>
+                            </tr>
+
+                          <tr class="tableHead">
+                            <th scope="col"></th>
+                            <th scope="col" >Segunda</th>
+                            <th scope="col">Terça</th>
+                            <th scope="col">Quarta</th>
+                            <th scope="col">Quinta</th>
+                            <th scope="col">Sexta</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <th scope="row" class="collumn">Carboidrato</th>
+                            <td>Bolo</td>
+                            <td>Chipa</td>
+                            <td>Biscoito</td>
+                            <td>Bolo</td>
+                            <td>Chipa</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="collumn">Liquido</th>
+                            <td>Suco</td>
+                            <td>Letie</td>
+                            <td>Suco</td>
+                            <td>Chá</td>
+                            <td>Suco</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="collumn">Fruta</th>
+                            <td>Maça</td>
+                            <td>Banana</td>
+                            <td>Abacaxi</td>
+                            <td>Laranja</td>
+                            <td>Maça</td>
+                          </tr>
+
+                        </tbody>
+
+                      </table> -->
+
+				<!-- <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th colspan = "6" class="title"> Cardápio Semanal</th>
+                            </tr>
+
+                          <tr class="tableHead">
+                            <th scope="col"></th>
+                            <th scope="col">Segunda</th>
+                            <th scope="col">Terça</th>
+                            <th scope="col">Quarta</th>
+                            <th scope="col">Quinta</th>
+                            <th scope="col">Sexta</th>
+                          </tr>
+                        </thead>
+
+                        <tbody th:each="item : ${listaItens}">
+                        
+                          <tr th:each="item : ${listaItens}">
+                            <th scope="row" class="collumn"><span th:text="${item.categoria.nome}"></span></th>
+                            <td><span th:text="${item.nome}"></span></td>
+                          </tr>
+
+                        </tbody>
+
+                      </table>-->
+
+			</div>
+</table> 
+
+<div class="row">
+	<div class="alert alert-danger alert-dismissible fade show"
+		th:if="${mensagemErro}">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		<span th:text="${mensagemErro}"></span>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Data inicio</th>
+				<th>Data Fim</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${ListaCardapio.empty}">
+				<td colspan="3">Não existe Cardapio registrado.</td>
+			</tr>
+			<tr th:each="cardapio : ${ListaCardapio}">
+				<td><span th:text="${cardapio.id}"></span></td>
+
+				<td><span th:text="${#dates.format(cardapio.agenda.dataInicio, 'dd-MM-yyyy')}"></span></td>
+				<td><span th:text="${#dates.format(cardapio.agenda.dataFim, 'dd-MM-yyyy')}"></span></td>
+									
+			</tr>
+		</tbody>
+	</table>
+</div>
+
  </body>
 </html>

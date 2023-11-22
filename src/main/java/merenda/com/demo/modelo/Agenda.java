@@ -3,6 +3,8 @@ package merenda.com.demo.modelo;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,12 +15,16 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Agenda {
 	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataInicio;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataFim;
 	
 	@OneToMany(mappedBy = "agenda")
@@ -28,12 +34,6 @@ public class Agenda {
 	private Tipo_merenda tipo_merenda;
 	
 	
-	public Date getData() {
-		return dataInicio;
-	}
-	public void setData(Date data) {
-		this.dataInicio = data;
-	}
 	public List<Cardapio> getCardapios() {
 		return cardapios;
 	}

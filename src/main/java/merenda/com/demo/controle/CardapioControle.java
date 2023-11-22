@@ -13,9 +13,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 //import br.edu.ifms.demo.modelo.Estudante;
 import jakarta.validation.Valid;
+import merenda.com.demo.modelo.Agenda;
+import merenda.com.demo.modelo.Cardapio;
 import merenda.com.demo.modelo.Categoria;
 import merenda.com.demo.modelo.Item;
 import merenda.com.demo.modelo.Tipo_merenda;
+import merenda.com.demo.repositorio.AgendaRepositorio;
 import merenda.com.demo.repositorio.CardapioRepositorio;
 import merenda.com.demo.repositorio.CategoriaRepositorio;
 import merenda.com.demo.repositorio.ItemRepositorio;
@@ -25,6 +28,9 @@ import merenda.com.demo.repositorio.Tipo_merendaRepositorio;
 @RequestMapping("/cardapio")
 public class CardapioControle {
 	
+	@Autowired
+	private AgendaRepositorio agendaRepositorio;
+
 	@Autowired
 	private Tipo_merendaRepositorio tipo_merendaRepository;
 	
@@ -53,10 +59,14 @@ public class CardapioControle {
 	return "/auth/aluno/cardapio";
 	}
 
-	@GetMapping("/listar")
-	public String listarNoticia(Model model) {
+	@GetMapping("/listar")  // Lista de cardapio
+	public String listarCardapio(Model model) {
+		List<Cardapio> cardapios = cardapioRepositorio.findAll();
+		model.addAttribute("ListaCardapio",cardapios);
 		return "/auth/admin/admin-listar-cardapio";	
 	}
+	
+	
 	
 	@GetMapping("/novoTipo")
 	public String adicionarTipo(Model model) {
@@ -64,7 +74,13 @@ public class CardapioControle {
 		return "/auth/admin/admin-criar-tipo";
 	}
 
-	
+	@GetMapping("/novaAgenda")
+	public String adicionarAgenda(Model model) {
+		model.addAttribute("agenda", new Agenda());
+		List<Cardapio> cardapio = cardapioRepositorio.findAll();
+		model.addAttribute("cardapios", cardapio);
+		return "/auth/admin/admin-criar-agenda";
+	}
 
 	@GetMapping("/novaCategoria")
 	public String adicionarCategoria(Model model) {
@@ -95,6 +111,21 @@ public class CardapioControle {
 		return "redirect:/cardapio/novoTipo";
 	}
 	
+
+	@PostMapping("/salvarAgenda")
+	public String salvarAgenda(@Valid Agenda agenda, BindingResult result, 
+				RedirectAttributes attributes, Model model) {
+		if (result.hasErrors()) {
+			List<Cardapio> cardapio = cardapioRepositorio.findAll();
+			model.addAttribute("cardapios", cardapio);
+			return "/auth/admin/admin-criar-agenda";
+		}	
+		agendaRepositorio.save(agenda);
+		attributes.addFlashAttribute("mensagem", "Agenda salva com sucesso!");
+		return "redirect:/cardapio/novaAgenda";
+	}
+
+
 	@PostMapping("/salvarCategoria")
 	public String salvarCategoria(@Valid Categoria categoria, BindingResult result, 
 				RedirectAttributes attributes, Model model) {
