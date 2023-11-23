@@ -67,7 +67,6 @@ public class CardapioControle {
 	}
 	
 	
-	
 	@GetMapping("/novoTipo")
 	public String adicionarTipo(Model model) {
 		model.addAttribute("tipo_merenda", new Tipo_merenda());
@@ -78,7 +77,7 @@ public class CardapioControle {
 	public String adicionarAgenda(Model model) {
 		model.addAttribute("agenda", new Agenda());
 		List<Cardapio> cardapio = cardapioRepositorio.findAll();
-		model.addAttribute("cardapios", cardapio);
+		model.addAttribute("cardapio", cardapio);
 		return "/auth/admin/admin-criar-agenda";
 	}
 
@@ -89,7 +88,21 @@ public class CardapioControle {
 		model.addAttribute("tipo", tipo_merenda);
 		return "/auth/admin/admin-criar-categoria";
 	}
-
+	
+	
+	
+	@GetMapping("/novoCardapio")
+	public String adicionarCardapio(Model model) {
+		model.addAttribute("cardapio", new Cardapio());
+		List<Cardapio> cardapio = cardapioRepositorio.findAll();
+		model.addAttribute("cardapio", cardapio);
+		
+		List<Agenda> agendas = agendaRepositorio.findAll();
+		model.addAttribute("agendas", agendas);
+		return "/auth/admin/admin-criar-cardapio";
+	}
+	
+	
 	
 
 	@GetMapping("/novoItem")
