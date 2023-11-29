@@ -143,8 +143,8 @@ public class CardapioControle {
 	public String salvarCategoria(@Valid Categoria categoria, BindingResult result, 
 				RedirectAttributes attributes, Model model) {
 		if (result.hasErrors()) {
-			List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
-			model.addAttribute("tipo", tipo_merenda);
+			//List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
+			//model.addAttribute("tipo", tipo_merenda);
 			return "/auth/admin/admin-criar-categoria";
 		}	
 		categoriaRepository.save(categoria);

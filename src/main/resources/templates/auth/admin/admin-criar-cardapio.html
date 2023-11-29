@@ -14,9 +14,36 @@
 
 
 <style>
-.mensagem {
-	color: red;
-}
+    .mensagem {
+        color: red;
+    }
+
+    .form-control {
+        width: 100%; /* Define a largura total para os inputs */
+        box-sizing: border-box; /* Garante que a largura inclua bordas e preenchimento */
+    }
+
+    .table {
+        border-collapse: collapse;
+        width: 80%; /* Define a largura da tabela */
+        align-items: center;
+    }
+
+    .table th,
+    .table td {
+        padding: 5px;
+        border: 1px solid #ddd;
+        text-align: center;
+        width: auto; /* Define a largura automática para as células */
+    }
+
+    .table-container {
+        align-items: center;
+        display: flex;
+        width: 80%; /* Define a largura do contêiner */
+    }
+
+
 </style>
 </head>
 <body>
@@ -34,6 +61,74 @@
 					method="post">
 
 					<div class="formulario">
+					
+					<div class="table-container">
+					
+						<table class="table">
+	
+							<thead>
+								<tr class="tableHead">
+									<th scope="col"></th>
+									<th scope="col">Liquido</th>
+									<th scope="col">Carboidrato</th>
+									<th scope="col">Fruta</th>
+								</tr>
+							</thead>
+	
+							<tbody>
+								<tr>
+									<th scope="row" class="collumn">06/11</th>
+									<td><input class="form-control" type="text"><!--th:field="*{item}">-->
+										<ul class="rate-area3">
+											<input type="radio" id="Bebida" name="opcao" value="Bebida"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Fruta" name="opcao" value="Fruta"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Carboidrato" name="opcao" value="Carboidrato"> <!--th:field="*{estrelasFruta}"-->
+										</ul>
+									</td>
+									<td><input class="form-control" type="text">
+										<ul class="rate-area3">
+											<input type="radio" id="Bebida" name="opcao" value="Bebida"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Fruta" name="opcao" value="Fruta"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Carboidrato" name="opcao" value="Carboidrato"> <!--th:field="*{estrelasFruta}"-->
+										</ul>
+									</td>
+									<td><input class="form-control" type="text">
+										<ul class="rate-area3">
+											<input type="radio" id="Bebida" name="opcao" value="Bebida"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Fruta" name="opcao" value="Fruta"> <!--th:field="*{estrelasFruta}"-->
+											<input type="radio" id="Carboidrato" name="opcao" value="Carboidrato"> <!--th:field="*{estrelasFruta}"-->
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="collumn">07/11</th>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+								</tr>
+								<tr>
+									<th scope="row" class="collumn">08/11</th>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+								</tr>
+								<tr>
+									<th scope="row" class="collumn">09/11</th>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+								</tr>
+								<tr>
+									<th scope="row" class="collumn">10/11</th>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+									<td><input class="form-control" type="text"></td>
+								</tr>
+							</tbody>
+	
+						</table>
+						
+					</div>
 
 						
 
