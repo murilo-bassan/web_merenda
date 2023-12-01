@@ -1,5 +1,7 @@
 package merenda.com.demo.controle;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import merenda.com.demo.repositorio.CardapioRepositorio;
 import merenda.com.demo.repositorio.CategoriaRepositorio;
 import merenda.com.demo.repositorio.ItemRepositorio;
 import merenda.com.demo.repositorio.Tipo_merendaRepositorio;
+import merenda.com.demo.utils.DataUtil;
 
 @Controller
 @RequestMapping("/cardapio")
@@ -97,8 +100,20 @@ public class CardapioControle {
 		List<Cardapio> cardapio = cardapioRepositorio.findAll();
 		model.addAttribute("cardapio", cardapio);
 		
+		List<Categoria> categorias = categoriaRepository.findAll();
+		model.addAttribute("categorias", categorias);
+		
 		List<Agenda> agendas = agendaRepositorio.findAll();
-		model.addAttribute("agendas", agendas);
+		Agenda agenda = agendas.get(agendas.size() - 1);
+		
+		DataUtil dataUtil = new DataUtil();
+		LocalDate d1 = dataUtil.convertToLocalDateViaInstant(agenda.getDataInicio());
+		LocalDate d2 = dataUtil.convertToLocalDateViaInstant(agenda.getDataFim());
+		
+		long daysBetween = ChronoUnit.DAYS.between(d1, d2);
+		model.addAttribute("dias", daysBetween + 1);
+		System.out.println("-----------------------------------" + daysBetween);
+		model.addAttribute("agenda", agenda);
 		return "/auth/admin/admin-criar-cardapio";
 	}
 	
