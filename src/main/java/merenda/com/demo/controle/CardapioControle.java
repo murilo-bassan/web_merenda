@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -87,9 +88,16 @@ public class CardapioControle {
 	@GetMapping("/novaCategoria")
 	public String adicionarCategoria(Model model) {
 		model.addAttribute("categoria", new Categoria());
-		List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
-		model.addAttribute("tipo", tipo_merenda);
+		model.addAttribute("listaCategorias", categoriaRepository.findAll());
 		return "/auth/admin/admin-criar-categoria";
+	}
+	
+	@GetMapping("/apagarCategoria/{id}")
+	public String deleteAlbum(@PathVariable("id") long id, Model model) {
+		Categoria categoria = categoriaRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
+		categoriaRepository.delete(categoria);
+		return "redirect:/";
 	}
 	
 	
@@ -110,7 +118,8 @@ public class CardapioControle {
 		LocalDate d1 = dataUtil.convertToLocalDateViaInstant(agenda.getDataInicio());
 		LocalDate d2 = dataUtil.convertToLocalDateViaInstant(agenda.getDataFim());
 		
-		long daysBetween = ChronoUnit.DAYS.between(d1, d2);
+		int daysBetween = (int)ChronoUnit.DAYS.between(d1, d2);
+		
 		model.addAttribute("dias", daysBetween + 1);
 		System.out.println("-----------------------------------" + daysBetween);
 		model.addAttribute("agenda", agenda);
@@ -150,7 +159,7 @@ public class CardapioControle {
 		}	
 		agendaRepositorio.save(agenda);
 		attributes.addFlashAttribute("mensagem", "Agenda salva com sucesso!");
-		return "redirect:/cardapio/novaAgenda";
+		return "redirect:/cardapio/novoCardapio";
 	}
 
 
