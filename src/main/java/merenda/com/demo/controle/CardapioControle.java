@@ -92,13 +92,22 @@ public class CardapioControle {
 		return "/auth/admin/admin-criar-categoria";
 	}
 	
+	
+	@GetMapping("/listarCategoria")  // Lista de cardapio
+	public String listarCategoria(Model model) {
+		model.addAttribute("listaCategorias", categoriaRepository.findAll());
+		return "/auth/admin/admin-listar-categoria";	
+	}
+	
 	@GetMapping("/apagarCategoria/{id}")
 	public String deleteAlbum(@PathVariable("id") long id, Model model) {
 		Categoria categoria = categoriaRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
 		categoriaRepository.delete(categoria);
-		return "redirect:/";
+		return "redirect:/listarCategoria";
 	}
+	
+	
 	
 	
 	

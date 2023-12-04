@@ -22,6 +22,9 @@ public class Item {
 	@NotNull
 	@ManyToOne
 	private Categoria categoria;
+	
+	@ManyToOne
+	private Cardapio cardapio;
 
 	public Long getId() {
 		return id;

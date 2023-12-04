@@ -22,6 +22,9 @@ public class Cardapio {
 	@OneToMany(mappedBy = "cardapio")
 	private List<Categoria> categorias;
 	
+	@OneToMany(mappedBy = "cardapio")
+	private List<Item> itens;
+	
 
 	public Long getId() {
 		return id;

@@ -70,7 +70,11 @@
 								<tr class="tableHead">
 									<th scope="col"></th>
 										<th:block th:each="categoria : ${categorias}">
-											<th scope="col" th:text="${categoria.nome}"></th>
+										
+											<!--<th:block th:if = "${categoria.itens.size > 0}">-->
+												<th scope="col" th:text="${categoria.nome}"></th>
+											<!-- </th:block>-->
+											
 										</th:block>
 								</tr>
 							</thead>
@@ -79,15 +83,14 @@
 								
 								<tr>
 									<th th:text="${agenda.dataInicio}" scope="row" class="collumn"></th>
-									<td> <!-- th:each="categoria : ${categorias}" --><input class="form-control" type="text"><!--th:field="*{item}">-->
-									</td>
-									<!-- --><td><input class="form-control" type="text">
-									</td>
-									<td><input class="form-control" type="text">
-									</td>
+									
+									<th:block th:each="categoria : ${categorias}">
+										<td th:if = "${categoria.nome != null}">
+											<input class="form-control" type="text"><!--th:field="*{item}">-->
+										</td>
+									</th:block>
 								</tr>
 								
-	
 						</table>
 						
 					</div>
