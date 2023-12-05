@@ -77,11 +77,14 @@
 						
 						<div class="row mb-3">
 							<label class="col-sm-1 col-form-label">Corpo da notícia :</label>
-
 							<div class="col-sm-5">
-								<input class="form-control" id="corpo" type="text"
-									th:field="*{corpo}" placeholder="Insira o corpo da notícia">
+								<textarea id="corpo" class="form-control" type="text" th:field="*{corpo}" placeholder="Insira o corpo da noticia"></textarea>
 							</div>
+							
+							<!--	<div class="col-sm-5">
+								<input class="form-control"  type="text"
+									th:field="*{corpo}" >
+							</div>-->
 
 							<span id="spanCorpo"> </span>
 
