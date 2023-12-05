@@ -82,7 +82,7 @@
 								<tbody th:each="i: ${#numbers.sequence(1, dias)}"> 
 								
 								<tr>
-									<th th:text="${agenda.dataInicio}" scope="row" class="collumn"></th>
+									<th th:text="${dI}" scope="row" class="collumn"></th>
 									
 									<th:block th:each="categoria : ${categorias}">
 										<td th:if = "${categoria.nome != null}">

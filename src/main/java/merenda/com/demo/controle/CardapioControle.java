@@ -100,11 +100,11 @@ public class CardapioControle {
 	}
 	
 	@GetMapping("/apagarCategoria/{id}")
-	public String deleteAlbum(@PathVariable("id") long id, Model model) {
+	public String deleteCategoria(@PathVariable("id") long id, Model model) {
 		Categoria categoria = categoriaRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
 		categoriaRepository.delete(categoria);
-		return "redirect:/listarCategoria";
+		return "redirect:/cardapio/listarCategoria";
 	}
 	
 	
@@ -130,8 +130,8 @@ public class CardapioControle {
 		int daysBetween = (int)ChronoUnit.DAYS.between(d1, d2);
 		
 		model.addAttribute("dias", daysBetween + 1);
-		System.out.println("-----------------------------------" + daysBetween);
 		model.addAttribute("agenda", agenda);
+		model.addAttribute("dI", agenda.dataIFormatada());
 		return "/auth/admin/admin-criar-cardapio";
 	}
 	
@@ -144,6 +144,20 @@ public class CardapioControle {
 		List<Categoria> categoria = categoriaRepository.findAll();
 		model.addAttribute("categoria", categoria);
 		return "/auth/admin/admin-criar-item";
+	}
+	
+	@GetMapping("/listarItem")  // Lista de cardapio
+	public String listarItem(Model model) {
+		model.addAttribute("listaItens", itemRepository.findAll());
+		return "/auth/admin/admin-listar-itens";	
+	}
+	
+	@GetMapping("/apagarItem/{id}")
+	public String deleteItem(@PathVariable("id") long id, Model model) {
+		Item item = itemRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
+		itemRepository.delete(item);
+		return "redirect:/cardapio/listarItem";
 	}
 	
 	@PostMapping("/salvarTipo")

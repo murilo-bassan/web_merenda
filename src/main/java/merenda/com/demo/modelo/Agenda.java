@@ -2,6 +2,7 @@ package merenda.com.demo.modelo;
 
 import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -64,7 +65,10 @@ public class Agenda {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-	 
-	
+	public String dataIFormatada() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+		String dataFormatada = sdf.format(this.dataInicio);
+		return dataFormatada;
+	}
 	
 }

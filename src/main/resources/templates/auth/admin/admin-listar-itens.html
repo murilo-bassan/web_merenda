@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-			<h2>Categorias Cadastradas</h2>
+			<h2>Itens Cadastradas</h2>
 				
 				<div class="row">
 							<table class="table table-striped">
@@ -32,25 +32,27 @@
 									<tr>
 										<th></th>
 										<th>Id</th>
+										<th>Itens</th>
 										<th>Categoria</th>
 										<th>Apagar</th>
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr th:if="${listaCategorias.empty}">
+									<tr th:if="${listaItens.empty}">
 										<td></td>
-										<td colspan="5">Não existem categorias.</td>
+										<td colspan="5">Não existem itens.</td>
 									</tr>
 
-									<tr th:each="categoria : ${listaCategorias}">
+									<tr th:each="item : ${listaItens}">
 										<td></td>
-										<td><span th:text="${categoria.id}"></span></td>
-										<td><span th:text="${categoria.nome}"></span></td>
+										<td><span th:text="${item.id}"></span></td>
+										<td><span th:text="${item.nome}"></span></td>
+										<td><span th:text="${item.categoria.nome}"></span></td>
 										<td><a
 											class="fa-regular fa-trash-can icon-dark btn-delete"
-											th:href="@{/cardapio/apagarCategoria/{id}(id=${categoria.id})}"
-											th:data-confirm-delete="|Você gostaria de apagar ${categoria.nome}?|"
+											th:href="@{/cardapio/apagarItem/{id}(id=${item.id})}"
+											th:data-confirm-delete="|Você gostaria de apagar ${item.nome}?|"
 											th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
 										return false"> Apagar
 										</a></td>
