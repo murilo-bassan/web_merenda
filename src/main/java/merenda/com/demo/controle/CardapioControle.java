@@ -34,15 +34,9 @@ public class CardapioControle {
 	
 	@Autowired
 	private AgendaRepositorio agendaRepositorio;
-
-	@Autowired
-	private Tipo_merendaRepositorio tipo_merendaRepository;
 	
 	@Autowired
 	private CategoriaRepositorio categoriaRepository;
-	
-	@Autowired
-	private ItemRepositorio itemRepository;
 	
 	@Autowired
 	private CardapioRepositorio cardapioRepositorio;
@@ -70,48 +64,7 @@ public class CardapioControle {
 		return "/auth/admin/admin-listar-cardapio";	
 	}
 	
-	
-	@GetMapping("/novoTipo")
-	public String adicionarTipo(Model model) {
-		model.addAttribute("tipo_merenda", new Tipo_merenda());
-		return "/auth/admin/admin-criar-tipo";
-	}
-
-	@GetMapping("/novaAgenda")
-	public String adicionarAgenda(Model model) {
-		model.addAttribute("agenda", new Agenda());
-		List<Cardapio> cardapio = cardapioRepositorio.findAll();
-		model.addAttribute("cardapio", cardapio);
-		return "/auth/admin/admin-criar-agenda";
-	}
-
-	@GetMapping("/novaCategoria")
-	public String adicionarCategoria(Model model) {
-		model.addAttribute("categoria", new Categoria());
-		model.addAttribute("listaCategorias", categoriaRepository.findAll());
-		return "/auth/admin/admin-criar-categoria";
-	}
-	
-	
-	@GetMapping("/listarCategoria")  // Lista de cardapio
-	public String listarCategoria(Model model) {
-		model.addAttribute("listaCategorias", categoriaRepository.findAll());
-		return "/auth/admin/admin-listar-categoria";	
-	}
-	
-	@GetMapping("/apagarCategoria/{id}")
-	public String deleteCategoria(@PathVariable("id") long id, Model model) {
-		Categoria categoria = categoriaRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
-		categoriaRepository.delete(categoria);
-		return "redirect:/cardapio/listarCategoria";
-	}
-	
-	
-	
-	
-	
-	@GetMapping("/novoCardapio")
+	@GetMapping("/novo")
 	public String adicionarCardapio(Model model) {
 		model.addAttribute("cardapio", new Cardapio());
 		List<Cardapio> cardapio = cardapioRepositorio.findAll();
@@ -133,83 +86,6 @@ public class CardapioControle {
 		model.addAttribute("agenda", agenda);
 		model.addAttribute("dI", agenda.dataIFormatada());
 		return "/auth/admin/admin-criar-cardapio";
-	}
-	
-	
-	
-
-	@GetMapping("/novoItem")
-	public String adicionarNoticia(Model model) {
-		model.addAttribute("item", new Item());
-		List<Categoria> categoria = categoriaRepository.findAll();
-		model.addAttribute("categoria", categoria);
-		return "/auth/admin/admin-criar-item";
-	}
-	
-	@GetMapping("/listarItem")  // Lista de cardapio
-	public String listarItem(Model model) {
-		model.addAttribute("listaItens", itemRepository.findAll());
-		return "/auth/admin/admin-listar-itens";	
-	}
-	
-	@GetMapping("/apagarItem/{id}")
-	public String deleteItem(@PathVariable("id") long id, Model model) {
-		Item item = itemRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Id inválido:" + id));
-		itemRepository.delete(item);
-		return "redirect:/cardapio/listarItem";
-	}
-	
-	@PostMapping("/salvarTipo")
-	public String salvarTipo(@Valid Tipo_merenda tipo_merenda, BindingResult result, 
-				RedirectAttributes attributes) {
-		if (result.hasErrors()) {
-			return "/auth/admin/admin-criar-tipo";
-		}	
-		tipo_merendaRepository.save(tipo_merenda);
-		attributes.addFlashAttribute("mensagem", "Tipo salvo com sucesso!");
-		return "redirect:/cardapio/novoTipo";
-	}
-	
-
-	@PostMapping("/salvarAgenda")
-	public String salvarAgenda(@Valid Agenda agenda, BindingResult result, 
-				RedirectAttributes attributes, Model model) {
-		if (result.hasErrors()) {
-			List<Cardapio> cardapio = cardapioRepositorio.findAll();
-			model.addAttribute("cardapios", cardapio);
-			return "/auth/admin/admin-criar-agenda";
-		}	
-		agendaRepositorio.save(agenda);
-		attributes.addFlashAttribute("mensagem", "Agenda salva com sucesso!");
-		return "redirect:/cardapio/novoCardapio";
-	}
-
-
-	@PostMapping("/salvarCategoria")
-	public String salvarCategoria(@Valid Categoria categoria, BindingResult result, 
-				RedirectAttributes attributes, Model model) {
-		if (result.hasErrors()) {
-			//List<Tipo_merenda> tipo_merenda = tipo_merendaRepository.findAll();
-			//model.addAttribute("tipo", tipo_merenda);
-			return "/auth/admin/admin-criar-categoria";
-		}	
-		categoriaRepository.save(categoria);
-		attributes.addFlashAttribute("mensagem", "Categoria salva com sucesso!");
-		return "redirect:/cardapio/novaCategoria";
-	}
-	
-	@PostMapping("/salvarItem")
-	public String salvarItem(@Valid Item item, BindingResult result, 
-				RedirectAttributes attributes, Model model) {
-		if (result.hasErrors()) {
-			List<Categoria> categoria = categoriaRepository.findAll();
-			model.addAttribute("categoria", categoria);
-			return "auth/admin/admin-criar-item";
-		}	
-		itemRepository.save(item);
-		attributes.addFlashAttribute("mensagem", "Item salvo com sucesso!");
-		return "redirect:/cardapio/novoItem";
 	}
 	
 }
