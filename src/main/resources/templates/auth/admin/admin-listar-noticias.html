@@ -6,18 +6,7 @@
 <body>
 
 	<!-- ======= NavBar ======= -->
-	<header id="header" class="header fixed-top d-flex align-items-left">
-			<nav class="header-nav ml-auto">
-				<div class="d-flex flex-row bd-highlight mb-3 messages" >
-					<div class="p-2 bd-highlight"><img src="/imagens/Captura de Tela 2023-09-13 às 10.55.03.png"
-					alt="Captura de Tela 2023-09-13 às 10.44.48" width="20%"></div>
-					<div class="p-2 bd-highlight message-item" style="color: white;">Merenda IFMS</div>
-				</div>
-			</nav>
-			<nav class="header-nav ms-auto">
-					<div class="bi bi-person-fill"></div>
-			</nav>
-	</header>
+	<div th:insert="auth/admin/fragments/navbar-admin :: navBar"></div>
 	<!-- ======= End NavBar ======= -->
 
 	<!-- ======= Sidebar ======= -->
