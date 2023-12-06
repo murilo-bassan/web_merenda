@@ -35,6 +35,7 @@
 										<th>Itens</th>
 										<th>Categoria</th>
 										<th>Apagar</th>
+										<th>Editar</th>
 									</tr>
 								</thead>
 
@@ -56,12 +57,18 @@
 											th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
 										return false"> Apagar
 										</a></td>
+										<td><a class="fa-solid fa-pen-to-square"
+											   th:href="@{/item/editar/{id}(id=${item.id})}"> Editar</a>
+										</td>
 									</tr>
 
 								</tbody>
 							</table>
 						</div>
-				
+						
+						<a
+							class="btn btn-primary" href="/cardapio/listar">Voltar
+						</a>
 			</div>
 		</div>
 	</div>

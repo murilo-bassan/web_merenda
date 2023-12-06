@@ -7,16 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
+import merenda.com.demo.excecao.CategoriaNotFoundException;
 import merenda.com.demo.modelo.Categoria;
 import merenda.com.demo.modelo.Item;
 import merenda.com.demo.repositorio.CategoriaRepositorio;
 import merenda.com.demo.repositorio.ItemRepositorio;
+import merenda.com.demo.service.ItemService;
 
 
 @Controller
@@ -28,6 +31,9 @@ public class ItemControle {
 	
 	@Autowired
 	ItemRepositorio itemRepository;
+	
+	@Autowired
+	ItemService itemService;
 	
 
 	@GetMapping("/novo")
@@ -64,5 +70,38 @@ public class ItemControle {
 		attributes.addFlashAttribute("mensagem", "Item salvo com sucesso!");
 		return "redirect:/item/novo";
 	}
+	
+	@GetMapping("/editar/{id}")
+	public String editarItem(@PathVariable("id") long id, RedirectAttributes attributes, Model model) {
+		try {
+			Item item = itemService.buscarItemPorId(id);
+			model.addAttribute("item", item);
+			List<Categoria> categorias = categoriaRepository.findAll();
+			model.addAttribute("categorias", categorias);
+			return "/auth/admin/admin-alterar-item";
+		} catch (CategoriaNotFoundException e) {
+			attributes.addFlashAttribute("mensagemErro", e.getMessage());
+		}
+		return "/auth/admin/admin-alterar-item";
+	}
+	
+	@PostMapping("/editar/{id}")
+	public String editarItem(@PathVariable("id") long id, @ModelAttribute("novaMusica") @Valid Item item,
+			BindingResult erros, Model model) {
+
+		if (erros.hasErrors()) {
+			item.setId(id);
+			List<Categoria> categorias = categoriaRepository.findAll();
+			model.addAttribute("categiorias", categorias);
+			return "/auth/admin/admin-alterar-item";
+		}
+		itemRepository.save(item);
+
+		return "redirect:/item/listar";
+	}
+	
+	
+	
+	
 	
 }

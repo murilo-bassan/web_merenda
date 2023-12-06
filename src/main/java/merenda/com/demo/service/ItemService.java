@@ -1,23 +1,24 @@
 package merenda.com.demo.service;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import merenda.com.demo.excecao.CategoriaNotFoundException;
-import merenda.com.demo.modelo.Categoria;
-import merenda.com.demo.repositorio.CategoriaRepositorio;
+import merenda.com.demo.modelo.Item;
+import merenda.com.demo.repositorio.ItemRepositorio;
 
 
 @Service
-public class CategoriaService {
+public class ItemService {
 	
 	@Autowired
-	CategoriaRepositorio categoriaRepositorio;
+	ItemRepositorio itemRepositorio;
 	
-	public Categoria buscarCategoriaPorId(long id) throws CategoriaNotFoundException {
-		Optional<Categoria> caixa = categoriaRepositorio.findById(id);
+	public Item buscarItemPorId(long id) throws CategoriaNotFoundException {
+		Optional<Item> caixa = itemRepositorio.findById(id);
 		if (caixa.isPresent()) {
 			return caixa.get();
 		} else {

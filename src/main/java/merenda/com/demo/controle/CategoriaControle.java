@@ -66,9 +66,9 @@ public class CategoriaControle {
 	@GetMapping("/editar/{id}")
 	public String editarCategoria(@PathVariable("id") long id, RedirectAttributes attributes, Model model) {
 		try {
-			Categoria categoria = categoriaService.buscarAlbumPorId(id);
-			model.addAttribute("novaCategoria", categoria);
-			return "/editar-album";
+			Categoria categoria = categoriaService.buscarCategoriaPorId(id);
+			model.addAttribute("categoria", categoria);
+			return "/auth/admin/admin-alterar-categoria";
 		} catch (CategoriaNotFoundException e) {
 			attributes.addFlashAttribute("mensagemErro", e.getMessage());
 		}
@@ -76,15 +76,15 @@ public class CategoriaControle {
 	}
 
 	@PostMapping("/editar/{id}")
-	public String editarCategoria(@PathVariable("id") long id, @ModelAttribute("novoAlbum") @Valid Categoria categoria,
+	public String editarCategoria(@PathVariable("id") long id, @ModelAttribute("categoria") @Valid Categoria categoria,
 			BindingResult erros) {
 
 		if (erros.hasErrors()) {
 			categoria.setId(id);
-			return "/editar-album";
+			return "/auth/admin/admin-alterar-categoria";
 		}
 		categoriaRepository.save(categoria);
 
-		return "redirect:/";
+		return "redirect:/categoria/listar";
 	}
 }
