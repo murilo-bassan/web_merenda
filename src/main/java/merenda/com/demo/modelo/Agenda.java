@@ -1,32 +1,26 @@
 package merenda.com.demo.modelo;
-
-import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
-
+import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
 @Entity
 public class Agenda {
 	
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataInicio;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataInicio;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataFim;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataFim;
 	
 	@OneToMany(mappedBy = "agenda")
 	private List<Cardapio> cardapios;
@@ -53,16 +47,16 @@ public class Agenda {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	public Date getDataFim() {
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
-	public void setDataFim(Date dataFim) {
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
 	public String dataIFormatada() {
@@ -72,3 +66,4 @@ public class Agenda {
 	}
 	
 }
+

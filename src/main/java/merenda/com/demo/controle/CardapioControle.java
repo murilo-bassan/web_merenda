@@ -1,7 +1,10 @@
 package merenda.com.demo.controle;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,15 +80,33 @@ public class CardapioControle {
 		Agenda agenda = agendas.get(agendas.size() - 1);
 		
 		DataUtil dataUtil = new DataUtil();
-		LocalDate d1 = dataUtil.convertToLocalDateViaInstant(agenda.getDataInicio());
-		LocalDate d2 = dataUtil.convertToLocalDateViaInstant(agenda.getDataFim());
+		LocalDate d1 = agenda.getDataInicio();
+		LocalDate d2 = agenda.getDataFim();
 		
 		int daysBetween = (int)ChronoUnit.DAYS.between(d1, d2);
 		
 		model.addAttribute("dias", daysBetween + 1);
 		model.addAttribute("agenda", agenda);
-		model.addAttribute("dI", agenda.dataIFormatada());
+		
+		//------------------------------------------------
+		
+		List<LocalDate> listaDeDatas = new ArrayList<>();
+        LocalDate dataAtual = agenda.getDataInicio();
+        LocalDate dataFim = agenda.getDataFim();
+        
+        while (!dataAtual.isAfter(dataFim)) {
+            listaDeDatas.add(dataAtual);
+            dataAtual = dataAtual.plusDays(1); // Incrementa a data atual em um dia
+        }
+
+        model.addAttribute("datas", listaDeDatas); // Envie a lista de datas para a página Thymeleaf
+		
+		//model.addAttribute("dInicio", agenda.getDataInicio());
+		//model.addAttribute("dI", agenda.dataIFormatada());
+		
 		return "/auth/admin/admin-criar-cardapio";
 	}
 	
 }
+
+
