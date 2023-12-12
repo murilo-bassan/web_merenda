@@ -3,32 +3,39 @@
 <link th:href="@{/assets/css.style.css}" rel="stylesheet" />
 
 <style>
-
-
 </style>
 
 <body>
 
-<table th:fragment="cardapio" class="table table-sm">	
-	<thead>
-	<tr> 
-		<td>
-		<a class="btn btn-primary" href="/categoria/nova">Cadastrar Categoria<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/categoria/listar">Gerenciar Categoria<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/item/novo">Cadastrar Alimento<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/item/listar">Gerenciar Alimentos<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/agenda/nova">Cadastrar Cardapio<i class="bi bi-plus"></i></a>
-		<!-- cadastro agenda e depois cadastrar cardapio -->
-		<!--<a class="btn btn-primary" href="/cardapio/novoTipo">Tipo<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/cardapio/novaCategoria">Categoria<i class="bi bi-plus"></i></a>
-		<a class="btn btn-primary" href="/cardapio/novoItem">Item<i class="bi bi-plus"></i></a>-->
-		
-		</td>
-	</tr>
-	</thead>
-	<div class="container" id="container">
+	<table th:fragment="cardapio" class="table table-sm">
+		<thead>
+			<tr>
 
-		<div class="row">
+				<td><a class="btn btn-primary" href="/categoria/nova">Cadastrar
+						Categoria<i class="bi bi-plus"></i>
+				</a></td>
+				<td><a class="btn btn-primary" href="/categoria/listar">Gerenciar
+						Categoria<i class="bi bi-plus"></i>
+				</a></td>
+				<td><a class="btn btn-primary" href="/item/novo">Cadastrar
+						Alimento<i class="bi bi-plus"></i>
+				</a></td>
+				<td><a class="btn btn-primary" href="/item/listar">Gerenciar
+						Alimentos<i class="bi bi-plus"></i>
+				</a></td>
+				<td><a class="btn btn-primary" href="/agenda/nova">Cadastrar
+						Cardapio<i class="bi bi-plus"></i>
+				</a></td>
+				<td><a class="btn btn-primary" href="/agenda/nova">Cadastrar
+						Cardapio<i class="bi bi-plus"></i>
+				</a></td>
+			</tr>
+
+		</thead>
+
+		<div class="container" id="container">
+
+			<div class="row">
 
 				<table class="table">
 
@@ -58,7 +65,7 @@
 							<td>Pão de Batata</td>
 							<td>Tangerina</td>
 						</tr>
-						
+
 						<tr>
 							<th scope="row" class="collumn">08/11</th>
 							<td>Leite com Maracujá</td>
@@ -160,36 +167,39 @@
                       </table>-->
 
 			</div>
-</table> 
-
-<div class="row">
-	<div class="alert alert-danger alert-dismissible fade show"
-		th:if="${mensagemErro}">
-		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-		<span th:text="${mensagemErro}"></span>
-	</div>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Data inicio</th>
-				<th>Data Fim</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:if="${ListaCardapio.empty}">
-				<td colspan="3">Não existe Cardapio registrado.</td>
-			</tr>
-			<tr th:each="cardapio : ${ListaCardapio}">
-				<td><span th:text="${cardapio.id}"></span></td>
-
-				<td><span th:text="${#dates.format(cardapio.agenda.dataInicio, 'dd-MM-yyyy')}"></span></td>
-				<td><span th:text="${#dates.format(cardapio.agenda.dataFim, 'dd-MM-yyyy')}"></span></td>
-									
-			</tr>
-		</tbody>
+			
 	</table>
-</div>
 
- </body>
+	<div class="row">
+		<div class="alert alert-danger alert-dismissible fade show"
+			th:if="${mensagemErro}">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			<span th:text="${mensagemErro}"></span>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Data inicio</th>
+					<th>Data Fim</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${ListaCardapio.empty}">
+					<td colspan="3">Não existe Cardapio registrado.</td>
+				</tr>
+				<tr th:each="cardapio : ${ListaCardapio}">
+					<td><span th:text="${cardapio.id}"></span></td>
+
+					<td><span
+						th:text="${#dates.format(cardapio.agenda.dataInicio, 'dd-MM-yyyy')}"></span></td>
+					<td><span
+						th:text="${#dates.format(cardapio.agenda.dataFim, 'dd-MM-yyyy')}"></span></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
 </html>
